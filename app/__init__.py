@@ -9,8 +9,15 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
+from flask_socketio import SocketIO, send
+
+
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+socketio = SocketIO(cors_allowed_origins='*')
+
+if __name__ == "__main__":
+    socketio.run(app)
 
 # Setup login manager
 login = LoginManager(app)
