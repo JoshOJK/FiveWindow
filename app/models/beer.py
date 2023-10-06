@@ -19,6 +19,5 @@ class Beer(db.Model):
         'id': self.id,
         'name': self.name,
         'description': self.description,
-        'abv': self.abv,
-        'shoppingCart_id': self.shoppingCart_id
+        'abv': self.abv
         }
