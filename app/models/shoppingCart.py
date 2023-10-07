@@ -14,7 +14,7 @@ class ShoppingCart(db.Model):
     # child = relationship("child", backref="parent")  # only on the parent class
 
     def to_dict(self):
-        beeritems_list = [beeritem.to_dict() for beeritem in self.beeritems]
+        beeritems_list = [beeritem.to_dict() for beeritem in self.beercartitems]
         return {
         'id': self.id,
         'cartOwner_id': self.cartOwner_id,

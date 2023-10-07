@@ -7,8 +7,9 @@ class BeerCartItem(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    beer_id = db.Column(db.String, db.ForeignKey(add_prefix_for_prod('beers.id')))
+    beer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('beers.id')))
     shoppingCart_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shoppingCarts.id')), nullable=False)
+    quantity = db.Column(db.Integer, nullable=True, default=1)
 
 
     shoppingCart = db.relationship('ShoppingCart', backref='beercartitems')
@@ -18,8 +19,8 @@ class BeerCartItem(db.Model):
 
         return {
         'id': self.id,
-        'name': self.name,
-        'description': self.description,
-        'abv': self.abv,
-        'shoppingCart_id': self.shoppingCart_id
+        'beer_id': self.beer_id,
+        'shoppingCart_id': self.shoppingCart_id,
+        'quantity': self.quantity,
+        'beer': self.beers.to_dict()
         }

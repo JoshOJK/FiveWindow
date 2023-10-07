@@ -2,6 +2,10 @@ from flask import Blueprint, jsonify, request
 from app.models import Beer, db
 from app.forms.beer_form import BeerForm
 from flask_login import login_required, current_user
+from app.models.shoppingCart import ShoppingCart
+from app.models.beercartItems import BeerCartItem
+from app.models.beer import Beer
+from app.forms.beer_cart_items_form import BeerCartItemForm
 
 beer_routes = Blueprint('beer', __name__)
 
@@ -90,3 +94,40 @@ def get_one_beerTap(id):
         results.append(beer.to_dict())
         return results
     return {'error': 'Beer tap could not be found'}, 404
+
+
+## Create a shopping cart
+@beer_routes.route('/<int:id>/shopping-cart', methods=['POST'])
+def create_user_cart(id):
+    form = BeerCartItemForm()
+    beer = Beer.query.get(id)
+    cart = ShoppingCart.query.filter(
+        ShoppingCart.cartOwner_id == current_user.id
+    ).first()
+    beerItem = BeerCartItem.query.filter(
+        BeerCartItem.beer_id == id,
+        BeerCartItem.shoppingCart_id == cart.id
+    ).first()
+
+
+
+    if beer and cart:
+        if beerItem:
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                beerItem.quantity+= form.data['quantity']
+                db.session.commit()
+                return beerItem.to_dict()
+            else:
+                form['csrf_token'].data = request.cookies['csrf_token']
+                if form.validate_on_submit():
+                    item = BeerCartItem(
+                    beer_id=id,
+                    shoppingCart_id=cart.id,
+                    quantity=form.data['quantity']
+                    )
+                    db.session.add(item)
+                    db.session.commit()
+                    return item.to_dict()
+
+    return {'errors': 'Failed to add item to your cart'}
