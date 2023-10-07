@@ -7,17 +7,20 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.beer_routes import beer_routes
+from .api.pizza_routes import pizza_routes
+from .api.shopping_cart_routes import cart_routes
 from .seeds import seed_commands
 from .config import Config
-from flask_socketio import SocketIO, send
+
+
 
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
-socketio = SocketIO(cors_allowed_origins='*')
 
-if __name__ == "__main__":
-    socketio.run(app)
+
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -35,6 +38,9 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(beer_routes, url_prefix='/api/beer')
+app.register_blueprint(pizza_routes, url_prefix='/api/pizza')
+app.register_blueprint(cart_routes, url_prefix='/api/cart')
 db.init_app(app)
 Migrate(app, db)
 
