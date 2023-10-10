@@ -6,6 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import PizzaPage from "./components/PizzaPage";
+import BeerPage from "./components/BeerPage";
+import ShopPage from "./components/ShopPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +28,15 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/shop'>
+            <ShopPage />
+          </Route>
+          <Route path='/beer'>
+            <BeerPage />
+          </Route>
+          <Route path='/pizza'>
+            <PizzaPage />
           </Route>
         <Route exact path='/'>
           <HomePage />
