@@ -16,7 +16,7 @@ const ShopPage = () => {
 
 
     return (
-        <div>
+        <div id="shop-wrapper">
           <div>
                 {beerArray?.map((beer) => (
                     <div>

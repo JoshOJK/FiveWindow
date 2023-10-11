@@ -19,7 +19,10 @@
   justify-content: space-between;
   background-color: black;
   padding: 8px;
+  position: fixed;
+  width: 100%;
 }
+
 
 #nav-bar-wrapper li{
   list-style: none;
@@ -49,6 +52,7 @@
 #profile-button:hover {
   color: red;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 #open-modal-butt {

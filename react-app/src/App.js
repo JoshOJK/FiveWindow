@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage";
 import PizzaPage from "./components/PizzaPage";
 import BeerPage from "./components/BeerPage";
 import ShopPage from "./components/ShopPage";
+import NewPizza from "./components/createPizza";
+import NewBeer from "./components/createBeer";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/pizza/create'>
+            <NewPizza />
+          </Route>
+          <Route path='/beer/create'>
+            <NewBeer />
           </Route>
           <Route path='/shop'>
             <ShopPage />
