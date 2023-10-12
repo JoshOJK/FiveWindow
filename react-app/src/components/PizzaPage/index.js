@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, Switch } from 'react-router-dom';
 import { LoadPizzas } from "../../store/pizza";
+import OpenModalButton from "../OpenModalButton";
+import DeleteForm from "../deletePizza";
 import "./pizzaPage.css"
 
 const PizzaPage = () => {
@@ -29,11 +31,25 @@ const PizzaPage = () => {
                         {currentUser?.isAdmin && (
                             <>
                             <NavLink to={`/pizza/${pizza?.id}/edit`}>Edit Pizza</NavLink>
+
+                            < OpenModalButton
+                            buttonText="Delete Menu Item"
+                            modalComponent={<DeleteForm pizzaId={pizza?.id}/>} />
                             </>
+
                         )}
                     </div>
                     </>
                 ))}
+            </div>
+            <div>
+                {currentUser?.isAdmin && (
+                <>
+                <NavLink to='/pizza/create'>
+                Create a Pizza
+                </NavLink>
+                </>
+            )}
             </div>
         </div>
     )

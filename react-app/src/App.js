@@ -11,6 +11,8 @@ import BeerPage from "./components/BeerPage";
 import ShopPage from "./components/ShopPage";
 import NewPizza from "./components/createPizza";
 import NewBeer from "./components/createBeer";
+import UpdateForm from "./components/editPizza";
+import UpdateBeerForm from "./components/editBeer";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/pizza/:pizzaId/edit'>
+            <UpdateForm />
+          </Route>
+          <Route path='/beer/:beerId/edit'>
+            <UpdateBeerForm />
           </Route>
           <Route path='/pizza/create'>
             <NewPizza />

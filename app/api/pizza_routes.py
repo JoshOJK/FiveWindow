@@ -28,12 +28,12 @@ def get_all_pizzas():
 ## Delete a pizza
 @pizza_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
-def delete_one_pizza():
+def delete_one_pizza(id):
     pizza = Pizza.query.get(id)
     if pizza:
         if current_user.isAdmin == True:
             db.session.delete(pizza)
-            db.commit()
+            db.session.commit()
             return {'Message': 'Pizza was successfully deleted'}
         return {'error': 'You must be an admin to delete menu items'}, 401
     return {'error': 'Menu item does not exist'}, 404

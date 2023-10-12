@@ -79,7 +79,7 @@ def delete_a_beer(id):
     if beerTap:
         if current_user.isAdmin == True:
             db.session.delete(beerTap)
-            db.commit()
+            db.session.commit()
             return {'Message': 'Beer Tap was successfully deleted'}
         return {'error': 'You must be an admin to delete beer taps'}, 401
     return {'error': 'Beer Tap does not exist'}, 404
