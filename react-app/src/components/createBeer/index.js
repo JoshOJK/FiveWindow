@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createBeer } from "../../store/beer";
 import "./createBeer.css"
 
@@ -8,6 +8,7 @@ import "./createBeer.css"
 const NewBeer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const beer = useSelector((state) => state.beer)
   const [name, setName] = useState("");
   const [description, setDescription] = useState('');
   const [abv, setAbv] = useState();

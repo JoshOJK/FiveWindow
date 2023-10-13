@@ -1,17 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink, Switch } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { LoadBeers } from "../../store/beer";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBeerForm from "../deleteBeer";
 import "./beerPage.css"
 
 const BeerPage = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     let beerObject = useSelector((state) => state.beer)
     let currentUser = useSelector((state) => state.session.user)
     let beerArray = Object.values(beerObject)
 
+
+
+
+
+    const checkBeerTap = () => {
+        if(beerArray.length >= 15) {
+            alert('Maximum beer taps of 15 has been reached')
+        } else {
+            history.push('/beer/create')
+        }
+    }
 
 
     useEffect(() => {
@@ -43,9 +55,9 @@ const BeerPage = () => {
 
             <div>
                 {currentUser?.isAdmin && (
-                <NavLink to='/beer/create'>
-                Create a Beer
-                </NavLink>
+                <button onClick={checkBeerTap}>
+                    create a beer tap
+                </button>
             )}
             </div>
 
