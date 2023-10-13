@@ -5,6 +5,14 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage";
+import PizzaPage from "./components/PizzaPage";
+import BeerPage from "./components/BeerPage";
+import ShopPage from "./components/ShopPage";
+import NewPizza from "./components/createPizza";
+import NewBeer from "./components/createBeer";
+import UpdateForm from "./components/editPizza";
+import UpdateBeerForm from "./components/editBeer";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +33,30 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path='/pizza/:pizzaId/edit'>
+            <UpdateForm />
+          </Route>
+          <Route path='/beer/:beerId/edit'>
+            <UpdateBeerForm />
+          </Route>
+          <Route path='/pizza/create'>
+            <NewPizza />
+          </Route>
+          <Route path='/beer/create'>
+            <NewBeer />
+          </Route>
+          <Route path='/shop'>
+            <ShopPage />
+          </Route>
+          <Route path='/beer'>
+            <BeerPage />
+          </Route>
+          <Route path='/pizza'>
+            <PizzaPage />
+          </Route>
+        <Route exact path='/'>
+          <HomePage />
+        </Route>
         </Switch>
       )}
     </>

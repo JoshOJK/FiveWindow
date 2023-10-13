@@ -5,3 +5,57 @@
 .hidden {
   display: none;
 }
+
+#home-page-icon {
+  height: 70px;
+  width: 70px;
+  padding: 5px;
+}
+
+#nav-bar-wrapper {
+  display: flex;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  padding: 8px;
+  position: fixed;
+  width: 100%;
+}
+
+
+#nav-bar-wrapper li{
+  list-style: none;
+  text-decoration: none;
+  align-self: center;
+}
+#nav-bar-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  gap: 5px;
+}
+
+#nav-bar-item:hover {
+  color: red;
+  transition: .5s;
+}
+
+#profile-button {
+  color: white;
+  font-size: 2rem;
+}
+
+#profile-button:hover {
+  color: red;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#open-modal-butt {
+  border: none;
+  background-color: black;
+}
