@@ -1,18 +1,21 @@
-
+const GET_SHOPPINGCART = "GET_SHOPPINGCART"
 const CREATE_CARTITEM = "CREATE_CARTITEM"
 const DELETE_CARTITEM = "DELETE_CARTITEM"
 const CREATE_SHOPPINGCART = "CREATE_SHOPPINGCART"
 
-
+const loadCart = (cart) => ({
+    type: GET_SHOPPINGCART,
+    cart
+})
 
 const createCart = (shoppingCart) => ({
     type: CREATE_SHOPPINGCART,
     shoppingCart
 })
 
-const createCartItem = (item) => ({
+const createCartItem = (cartItem) => ({
     type: CREATE_CARTITEM,
-    item
+    cartItem
 })
 
 const deleteCartItem = (itemId) => ({
@@ -21,12 +24,23 @@ const deleteCartItem = (itemId) => ({
 })
 
 
+export const LoadCart = () => async (dispatch) => {
+    const res = await fetch('/api/cart')
+    console.log(res)
+    if(res.ok) {
+        const personalCart = await res.json()
+        dispatch(loadCart(personalCart))
+        return res
+    }
+}
+
+
 export const createShoppingCart = () => async (dispatch) => {
-    const res = await fetch("/api/cart", {
+    const res = await fetch("/api/cart/create", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
     })
-
+    console.log('AHAHAHAAAAAAAHAHAHAHAHAAHHAHAHAHAHAHA', res)
     if(res.ok) {
         const shoppingCart = await res.json()
         dispatch(createCart(shoppingCart))
@@ -45,7 +59,8 @@ export const newCartItem = (itemId, payload) => async (dispatch) => {
 
     if(res.ok) {
         const cartItem = await res.json()
-        dispatch(createCartItem(cartItem))
+        console.log(cartItem.beer)
+        dispatch(createCartItem(cartItem.beer))
         return res
     }
 }
@@ -62,6 +77,9 @@ export const deleteItem = (itemId) => async (dispatch) => {
 const cartReducer = (state = {}, action) => {
     let newState = {...state}
     switch (action.type) {
+        case GET_SHOPPINGCART:
+            newState[action.cart.id] = action.cart
+            return newState
         case CREATE_SHOPPINGCART:
             newState[action.shoppingCart.id] = action.shoppingCart
             return newState

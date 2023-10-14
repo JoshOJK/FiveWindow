@@ -104,11 +104,12 @@ def create_user_cart(id):
     cart = ShoppingCart.query.filter(
         ShoppingCart.cartOwner_id == current_user.id
     ).first()
+    print("---------------+", cart.id)
     beerItem = BeerCartItem.query.filter(
         BeerCartItem.beer_id == id,
         BeerCartItem.shoppingCart_id == cart.id
     ).first()
-
+    print("----------------", beer.name)
 
 
     if beer and cart:
@@ -118,17 +119,17 @@ def create_user_cart(id):
                 beerItem.quantity+= form.data['quantity']
                 db.session.commit()
                 return beerItem.to_dict()
-            else:
-                form['csrf_token'].data = request.cookies['csrf_token']
-                if form.validate_on_submit():
-                    item = BeerCartItem(
-                    beer_id=id,
-                    shoppingCart_id=cart.id,
-                    quantity=form.data['quantity']
-                    )
-                    db.session.add(item)
-                    db.session.commit()
-                    return item.to_dict()
+        else:
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                item = BeerCartItem(
+                beer_id=id,
+                shoppingCart_id=cart.id,
+                quantity=form.data['quantity']
+                )
+                db.session.add(item)
+                db.session.commit()
+                return item.to_dict()
 
     return {'errors': 'Failed to add item to your cart'}
 

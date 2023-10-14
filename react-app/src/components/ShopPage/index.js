@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink} from 'react-router-dom';
 import { LoadBeers } from "../../store/beer";
-import { newCartItem } from "../../store/shoppingCart";
+import { LoadCart, newCartItem } from "../../store/shoppingCart";
 
 const ShopPage = () => {
     const dispatch = useDispatch();
     let beerObject = useSelector((state) => state.beer)
     let beerArray = Object.values(beerObject)
-    let cart = useSelector((state) => state)
+    let cart = useSelector((state) => state.cart)
 
     console.log(cart)
 
@@ -19,7 +19,7 @@ const ShopPage = () => {
 
 
     useEffect(() => {
-        dispatch(LoadBeers())
+        dispatch(LoadBeers()).then(dispatch(LoadCart()))
     }, [dispatch])
 
 

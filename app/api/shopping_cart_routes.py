@@ -17,11 +17,21 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 ## Initialize shopping cart
-@cart_routes.route('/', methods=['POST'])
+@cart_routes.route('/create', methods=['POST'])
 def create_a_create():
     cart = ShoppingCart(
         cartOwner_id=current_user.id
     )
     db.session.add(cart)
     db.session.commit()
+    return cart.to_dict()
+
+
+@cart_routes.route('/')
+def get_a_cart():
+    cart = ShoppingCart.query.filter(
+        ShoppingCart.cartOwner_id == current_user.id
+    ).first()
+    print("-------------", cart)
+
     return cart.to_dict()

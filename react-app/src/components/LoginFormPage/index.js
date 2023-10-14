@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { createShoppingCart } from "../../store/shoppingCart";
+import { createShoppingCart, LoadCart } from "../../store/shoppingCart";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -14,6 +14,16 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
+
+  const createCart = () => {
+    if (sessionCart.cartOwner_id == sessionUser.id) {
+      LoadCart()
+    } else {
+      createShoppingCart()
+    }
+
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +60,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" onClick={createCart}>Log In</button>
       </form>
     </>
   );

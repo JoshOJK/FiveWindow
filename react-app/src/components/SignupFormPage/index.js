@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
-import { createShoppingCart } from "../../store/shoppingCart";
+import { createShoppingCart, LoadCart } from "../../store/shoppingCart";
 import './SignupForm.css';
 
 function SignupFormPage() {
@@ -17,9 +17,11 @@ function SignupFormPage() {
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
+        const data = await dispatch(signUp(username, email, password))
+        await dispatch(createShoppingCart()).then(dispatch(LoadCart()));
         if (data) {
           setErrors(data)
         }
@@ -71,7 +73,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        <button type="submit" onClick={createShoppingCart}>Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
     </>
   );
