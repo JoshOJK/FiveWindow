@@ -1,7 +1,9 @@
+
 const GET_SHOPPINGCART = "GET_SHOPPINGCART"
 const CREATE_CARTITEM = "CREATE_CARTITEM"
 const DELETE_CARTITEM = "DELETE_CARTITEM"
 const CREATE_SHOPPINGCART = "CREATE_SHOPPINGCART"
+
 
 const loadCart = (cart) => ({
     type: GET_SHOPPINGCART,
@@ -15,7 +17,7 @@ const createCart = (shoppingCart) => ({
 
 const createCartItem = (cartItem) => ({
     type: CREATE_CARTITEM,
-    cartItem
+    payload: cartItem
 })
 
 const deleteCartItem = (itemId) => ({
@@ -25,7 +27,7 @@ const deleteCartItem = (itemId) => ({
 
 
 export const LoadCart = () => async (dispatch) => {
-    const res = await fetch('/api/cart')
+    const res = await fetch('/api/cart/')
     console.log(res)
     if(res.ok) {
         const personalCart = await res.json()
@@ -56,13 +58,17 @@ export const newCartItem = (itemId, payload) => async (dispatch) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
-
+        console.log(res)
     if(res.ok) {
         const cartItem = await res.json()
-        console.log(cartItem.beer)
-        dispatch(createCartItem(cartItem.beer))
-        return res
+        console.log("HELEHLLHEHLEHLEHL", cartItem.beer)
+        dispatch(createCartItem(cartItem))
+        return cartItem;
+    } else {
+        const errors = await res.json()
+        console.log(errors)
     }
+
 }
 
 export const deleteItem = (itemId) => async (dispatch) => {
@@ -74,17 +80,42 @@ export const deleteItem = (itemId) => async (dispatch) => {
 }
 
 
-const cartReducer = (state = {}, action) => {
+// const cartReducer = (state = {}, action) => {
+//     let newState = {...state}
+//     switch (action.type) {
+//         case GET_SHOPPINGCART:
+//             newState[action.cart.id] = action.cart
+//             return newState
+//         case CREATE_SHOPPINGCART:
+//             newState[action.shoppingCart.id] = action.shoppingCart
+//             return newState
+//         case CREATE_CARTITEM:
+//             let cartItem = action.payload
+//             newState[cartItem.id] = cartItem
+//             return newState
+//         case DELETE_CARTITEM:
+//             delete newState[action.itemId]
+//             return newState
+//         default:
+//             return state
+//     }
+// }
+
+const cartReducer = (state = {personalCart:{
+    beerItems: []
+}}, action) => {
     let newState = {...state}
     switch (action.type) {
         case GET_SHOPPINGCART:
-            newState[action.cart.id] = action.cart
+            newState.personalCart = action.cart
             return newState
         case CREATE_SHOPPINGCART:
-            newState[action.shoppingCart.id] = action.shoppingCart
+            newState.personalCart = action.shoppingCart
             return newState
         case CREATE_CARTITEM:
-            newState[action.cartItem.id] = action.cartItem
+            let cartItem = action.payload
+            console.log("STATE", newState)
+            newState.personalCart.beeritems = [...newState.personalCart.beeritems, cartItem]
             return newState
         case DELETE_CARTITEM:
             delete newState[action.itemId]

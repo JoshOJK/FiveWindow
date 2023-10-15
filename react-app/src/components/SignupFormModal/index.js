@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import { createShoppingCart, LoadCart } from "../../store/shoppingCart";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -17,6 +18,11 @@ function SignupFormModal() {
 		e.preventDefault();
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
+			try {
+				await dispatch(createShoppingCart())
+				await dispatch(LoadCart())
+			  }
+			  catch (error) { console.log("SIGN_UP",error) }
 			if (data) {
 				setErrors(data);
 			} else {

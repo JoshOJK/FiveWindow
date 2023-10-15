@@ -10,17 +10,20 @@ const ShopPage = () => {
     let beerArray = Object.values(beerObject)
     let cart = useSelector((state) => state.cart)
 
-    console.log(cart)
-
 
     let payload = {
         quantity: 1
     }
 
+    const handleKeg = async (beerId, payload) => {
+        await dispatch(newCartItem(beerId, payload))
+        await dispatch(LoadCart())
+    }
 
     useEffect(() => {
-        dispatch(LoadBeers()).then(dispatch(LoadCart()))
-    }, [dispatch])
+        dispatch(LoadBeers())
+        dispatch(LoadCart())
+    }, [dispatch, LoadBeers, LoadCart])
 
 
     return (
@@ -29,8 +32,8 @@ const ShopPage = () => {
                 {beerArray?.map((beer) => (
                     <div>
                     <div>{beer?.name}-{beer?.abv}.0%</div>
-                    <button onClick={newCartItem(beer?.id, payload)}>Half Keg 89.99$</button>
-                    <button onClick={newCartItem(beer?.id, payload)}>Full Keg 189.99$</button>
+                    <button onClick={() => handleKeg(beer.id, payload)}>Half Keg 89.99$</button>
+                    <button onClick={() => handleKeg(beer.id, payload)}>Full Keg 189.99$</button>
                     </div>
                 ))}
             </div>
