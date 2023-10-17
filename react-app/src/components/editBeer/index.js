@@ -6,8 +6,8 @@ import { updateBeer, loadBeerDetails } from "../../store/beer";
 
 
 
-const UpdateBeerForm = () => {
-    const { beerId } = useParams();
+const UpdateBeerForm = ({ beerId }) => {
+    // const { beerId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const beer = useSelector((state) => state.beer[beerId])

@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .pizzas import seed_pizzas, unseed_pizzas
 from .beers import seed_beers, unseed_beers
+from .shoppingCart import seed_shopping_carts, undo_shopping_carts
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,6 +22,8 @@ def seed():
         undo_users()
         unseed_beers()
         unseed_pizzas()
+        undo_shopping_carts()
+    seed_shopping_carts()
     seed_users()
     seed_beers()
     seed_pizzas()
@@ -33,4 +36,5 @@ def undo():
     undo_users()
     unseed_pizzas()
     unseed_beers()
+    undo_shopping_carts()
     # Add other undo functions here

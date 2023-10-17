@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector} from 'react-redux';
 import ProfileButton from './ProfileButton';
+import CartDropDown from '../shoppingCart';
 import './Navigation.css';
+
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const [openCart, setOpenCart] = useState(false)
+
+	const handleDropDown = () => {
+		setOpenCart(!openCart)
+
+	}
 
 	return (
+		<>
 		<ul id='nav-bar-wrapper'>
 			{isLoaded && (
 			<li id='profile-button'>
@@ -31,11 +40,14 @@ function Navigation({ isLoaded }){
 			<li>
 				<NavLink id="nav-bar-item" to='/shop'><span class="material-symbols-outlined nav">shopping_bag</span>Shop</NavLink>
 			</li>
-			<li>
-				<span id="nav-bar-item"><span class="material-symbols-outlined nav">shopping_cart</span>Cart </span>
+			<li onClick={handleDropDown}>
+				<span id="nav-bar-item"><span class="material-symbols-outlined nav">shopping_cart</span>Cart</span>
 			</li>
 		</ul>
-
+			{openCart && (
+				<CartDropDown />
+			)}
+			</>
 	);
 }
 

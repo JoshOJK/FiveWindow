@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -11,27 +11,17 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
-  const sessionUser = useSelector((state) => state.session.user)
-  const sessionCart = useSelector((state) => state.cart)
 
 
-  const createCart = () => {
-    if (sessionCart.cartOwner_id == sessionUser.id) {
-      LoadCart()
-    } else {
-      createShoppingCart()
-    }
 
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    createCart()
+    const data = await dispatch(login(email, password))
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
 

@@ -6,8 +6,8 @@ import { updatePizza, loadPizzaDetails } from "../../store/pizza";
 
 
 
-const UpdateForm = () => {
-    const { pizzaId } = useParams();
+const UpdateForm = ({ pizzaId }) => {
+    // const { pizzaId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const pizza = useSelector((state) => state.pizza[pizzaId])

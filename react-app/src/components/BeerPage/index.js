@@ -4,6 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { LoadBeers } from "../../store/beer";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBeerForm from "../deleteBeer";
+import UpdateBeerForm from "../editBeer";
 import "./beerPage.css"
 
 const BeerPage = () => {
@@ -41,7 +42,11 @@ const BeerPage = () => {
                         <div>
                     {currentUser?.isAdmin && (
                         <>
-                        <NavLink to={`/beer/${beer?.id}/edit`}>Edit Tap</NavLink>
+                        <OpenModalButton
+                        buttonText="Edit-Beer-Tap"
+                        modalComponent={<UpdateBeerForm beerId={beer?.id}/>}
+                        />
+
                         <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeleteBeerForm beerId={beer?.id}/>}

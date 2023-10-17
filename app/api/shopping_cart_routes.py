@@ -32,6 +32,5 @@ def get_a_cart():
     cart = ShoppingCart.query.filter(
         ShoppingCart.cartOwner_id == current_user.id
     ).first()
-    print("-------------", cart)
 
     return cart.to_dict()

@@ -28,7 +28,7 @@ const deleteCartItem = (itemId) => ({
 
 export const LoadCart = () => async (dispatch) => {
     const res = await fetch('/api/cart/')
-    console.log(res)
+
     if(res.ok) {
         const personalCart = await res.json()
         dispatch(loadCart(personalCart))
@@ -42,7 +42,6 @@ export const createShoppingCart = () => async (dispatch) => {
         method: "POST",
         headers: {"Content-Type": "application/json"},
     })
-    console.log('AHAHAHAAAAAAAHAHAHAHAHAAHHAHAHAHAHAHA', res)
     if(res.ok) {
         const shoppingCart = await res.json()
         dispatch(createCart(shoppingCart))
@@ -58,10 +57,9 @@ export const newCartItem = (itemId, payload) => async (dispatch) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
-        console.log(res)
+
     if(res.ok) {
         const cartItem = await res.json()
-        console.log("HELEHLLHEHLEHLEHL", cartItem.beer)
         dispatch(createCartItem(cartItem))
         return cartItem;
     } else {
@@ -114,7 +112,6 @@ const cartReducer = (state = {personalCart:{
             return newState
         case CREATE_CARTITEM:
             let cartItem = action.payload
-            console.log("STATE", newState)
             newState.personalCart.beeritems = [...newState.personalCart.beeritems, cartItem]
             return newState
         case DELETE_CARTITEM:

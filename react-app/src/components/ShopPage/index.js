@@ -9,6 +9,7 @@ const ShopPage = () => {
     let beerObject = useSelector((state) => state.beer)
     let beerArray = Object.values(beerObject)
     let cart = useSelector((state) => state.cart)
+    const sessionUser = useSelector((state) => state.session.user)
 
 
     let payload = {
@@ -16,9 +17,16 @@ const ShopPage = () => {
     }
 
     const handleKeg = async (beerId, payload) => {
-        await dispatch(newCartItem(beerId, payload))
-        await dispatch(LoadCart())
+        if (sessionUser) {
+            await dispatch(newCartItem(beerId, payload))
+            await dispatch(LoadCart())
+        } else {
+            alert("Log-in or Sign-up to add an item to your cart!")
+        }
+
     }
+
+
 
     useEffect(() => {
         dispatch(LoadBeers())
