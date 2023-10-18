@@ -104,12 +104,10 @@ def create_user_cart(id):
     cart = ShoppingCart.query.filter(
         ShoppingCart.cartOwner_id == current_user.id
     ).first()
-    print("---------------+", cart.id)
     beerItem = BeerCartItem.query.filter(
         BeerCartItem.beer_id == id,
         BeerCartItem.shoppingCart_id == cart.id
     ).first()
-    print("----------------", beer.name)
 
 
     if beer and cart:

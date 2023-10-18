@@ -1,4 +1,3 @@
-
 const GET_SHOPPINGCART = "GET_SHOPPINGCART"
 const CREATE_CARTITEM = "CREATE_CARTITEM"
 const DELETE_CARTITEM = "DELETE_CARTITEM"
@@ -112,7 +111,7 @@ const cartReducer = (state = {personalCart:{
             return newState
         case CREATE_CARTITEM:
             let cartItem = action.payload
-            newState.personalCart.beeritems = [...newState.personalCart.beeritems, cartItem]
+            newState.personalCart.beerItems = [...newState.personalCart.beerItems, cartItem]
             return newState
         case DELETE_CARTITEM:
             delete newState[action.itemId]

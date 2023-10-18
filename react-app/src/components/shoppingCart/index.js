@@ -10,8 +10,17 @@ const CartDropDown = () => {
     const dispatch = useDispatch();
     const userCart = useSelector((state) => state.cart.personalCart)
     const sessionUser = useSelector((state) => state.session.user)
-    const cartItems = userCart.beeritems
+    const cartItems = userCart.beerItems
 
+    console.log(cartItems)
+
+    const checkout = async (cartItems) => {
+        for(let item of cartItems) {
+            await dispatch(deleteItem(item.beer.id))
+            await dispatch(LoadCart())
+        }
+        alert('Feature coming soon!')
+    }
 
     const deleteCartItem = async (itemId) => {
         await dispatch(deleteItem(itemId))
@@ -35,6 +44,7 @@ const CartDropDown = () => {
                 ))}
                 </li>
             </ul>
+            <button onClick={() => checkout(cartItems)} id="checkout-button">Checkout</button>
         </div>
         ):(
             <div id="no-cart-items">

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { updateBeer, loadBeerDetails } from "../../store/beer";
+import { useModal } from "../../context/Modal";
+import { LoadBeers } from "../../store/beer";
 
 
 
@@ -13,6 +15,7 @@ const UpdateBeerForm = ({ beerId }) => {
     const beer = useSelector((state) => state.beer[beerId])
     const [validSubmit, setValidSubmit] = useState(false)
     const [errors, setErrors] = useState({});
+    const { closeModal } = useModal();
 
 
     const [data, setData] = useState({
@@ -80,7 +83,8 @@ const UpdateBeerForm = ({ beerId }) => {
             try {
                 dispatch(updateBeer(beerId, data))
                 .then(() => {
-                history.push(`/beer`)
+                dispatch(LoadBeers())
+                closeModal()
                 })
 
             } catch(error) {

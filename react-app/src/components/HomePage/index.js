@@ -22,8 +22,9 @@ const HomePage = () => {
     return (
         <div id="homepage-wrapper">
             <div>
-                <h2>{pizzaArray[4]?.name}</h2>
-                <p>{pizzaArray[4]?.price} $</p>
+                <h2>{pizzaArray[10]?.name}</h2>
+                <p>{pizzaArray[10]?.price} $</p>
+                <img src={pizzaArray[10]?.pizzaImg} alt="pizza image"></img>
             </div>
             <h1>
                 Five Window Beer Company

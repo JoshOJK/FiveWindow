@@ -1,5 +1,5 @@
 #Dropdown-container-content{
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     top: 100px;
@@ -10,6 +10,7 @@
     height: 250px;
     width: 250px;
 }
+
 
 #cart-items-wrapper{
     list-style: none;

@@ -40,8 +40,8 @@ const ShopPage = () => {
                 {beerArray?.map((beer) => (
                     <div>
                     <div>{beer?.name}-{beer?.abv}.0%</div>
-                    <button onClick={() => handleKeg(beer.id, payload)}>Half Keg 89.99$</button>
-                    <button onClick={() => handleKeg(beer.id, payload)}>Full Keg 189.99$</button>
+                    <button onClick={() => handleKeg(beer?.id, payload)}>Half Keg 89.99$</button>
+                    <button onClick={() => handleKeg(beer?.id, payload)}>Full Keg 189.99$</button>
                     </div>
                 ))}
             </div>

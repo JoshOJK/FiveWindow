@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { updatePizza, loadPizzaDetails } from "../../store/pizza";
+import { useModal } from "../../context/Modal";
+import { LoadPizzas } from "../../store/pizza";
 
 
 
@@ -13,6 +15,7 @@ const UpdateForm = ({ pizzaId }) => {
     const pizza = useSelector((state) => state.pizza[pizzaId])
     const [validSubmit, setValidSubmit] = useState(false)
     const [errors, setErrors] = useState({});
+    const { closeModal } = useModal();
 
 
     const [data, setData] = useState({
@@ -93,7 +96,8 @@ const UpdateForm = ({ pizzaId }) => {
 
                 dispatch(updatePizza(pizzaId, data))
                 .then(() => {
-                history.push(`/pizza`)
+                dispatch(LoadPizzas())
+                closeModal()
                 })
 
             } catch(error) {
@@ -176,7 +180,7 @@ const UpdateForm = ({ pizzaId }) => {
 
                     </div>
                 </div>
-                <button type="submit" disabled={validSubmit} className="create-resturant-btn" >Update Restaurant</button>
+                <button type="submit" disabled={validSubmit} className="create-resturant-btn" >Update Pizza</button>
             </form>
         </section>
     )
