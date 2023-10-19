@@ -28,6 +28,7 @@ const PizzaPage = () => {
                     <div>{pizza?.name}-{pizza?.price}$</div>
                     <div>{pizza?.description}</div>
                     <div>{pizza?.ingredientList}</div>
+                    <img src={pizza?.pizzaImg} />
                     <div>
                         {currentUser?.isAdmin && (
                             <>

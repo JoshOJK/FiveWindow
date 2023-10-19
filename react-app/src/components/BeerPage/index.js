@@ -6,6 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteBeerForm from "../deleteBeer";
 import UpdateBeerForm from "../editBeer";
 import "./beerPage.css"
+import  pizzaImg  from "../../Images/_DCP2203.jpg"
 
 const BeerPage = () => {
     const history = useHistory();
@@ -34,6 +35,7 @@ const BeerPage = () => {
 
     return (
         <div id="beer-wrapper">
+            < img width={500} src={pizzaImg} />
           <div>
                 {beerArray?.map((beer) => (
                 <div>

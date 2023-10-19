@@ -35,7 +35,7 @@ function Navigation({ isLoaded }){
 
 			</li>
 			<li>
-				<NavLink id="nav-bar-item" to='/pizza'><span class="material-symbols-outlined nav">local_pizza</span>Pizza of the Month</NavLink>
+				<NavLink id="nav-bar-item" to='/pizza'><span class="material-symbols-outlined nav">local_pizza</span>Pizza</NavLink>
 			</li>
 			<li>
 				<NavLink id="nav-bar-item" to='/shop'><span class="material-symbols-outlined nav">shopping_bag</span>Shop</NavLink>

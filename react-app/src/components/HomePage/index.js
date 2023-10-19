@@ -20,25 +20,40 @@ const HomePage = () => {
 
 
     return (
+        <>
         <div id="homepage-wrapper">
-            <div>
-                <h2>{pizzaArray[10]?.name}</h2>
-                <p>{pizzaArray[10]?.price} $</p>
-                <img src={pizzaArray[10]?.pizzaImg} alt="pizza image"></img>
+            <div id="center-info">
+            <p id='fwbc-title'>Five Window Beer Company</p>
+            <span id="under-title"> Est. 2017</span>
             </div>
-            <h1>
-                Five Window Beer Company
-            </h1>
-            <p>Explore Downtown Lodi's cozy hub for craft beer lovers, offering a friendly ambiance and outstanding brews.</p>
-            <div>
-                {beerArray?.map((beer) => (
-                    <div>{beer?.name}-{beer?.abv}.0%</div>
-                ))}
-            </div>
-
-            <div>About Us</div>
 
         </div>
+
+        <div id='monthy-items'>
+            <div id="za-of-month">
+                <div id="pizza-of-month">
+                    <p id="pom-title">Pizza of the Month</p>
+                    <img id='pom-img' src={pizzaArray[9]?.pizzaImg} alt="pizza image"></img>
+                    <h2 id='pom-name'>
+                    <span id='pom-price'>$ {pizzaArray[9]?.price}</span>
+                {   pizzaArray[9]?.name}</h2>
+                </div>
+            </div>
+            <div id="za-of-month">
+            <div id='beer-on-tap'>
+                <p id="beer-on-tap-title">Beer on Tap</p>
+                {beerArray?.map((beer) => (
+                    <div id="one-tap" key={beer?.id}>{beer?.name}-{beer?.abv}.0%</div>
+                ))}
+            </div>
+            </div>
+        </div>
+        <div id='about-us'>
+            <p id="homepage-detail">Explore Downtown Lodi's cozy hub for craft beer lovers, offering a friendly ambiance and outstanding brews.</p>
+            <div>Our mission</div>
+            <p>we are all about serving qualtity beer in a family friendly environment </p>
+        </div>
+        </>
     )
 }
 

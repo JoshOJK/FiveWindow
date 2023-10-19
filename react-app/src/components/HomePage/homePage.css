@@ -1,3 +1,102 @@
 #homepage-wrapper {
     padding-top: 86px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('https://visitlodi.com/wp-content/uploads/2022/07/997306ae-b7ad-4495-899d-adaf53b8f19f_1504_1000auto1.jpg');
+    background-position: center;
+    background-position-y: 1100px;
+    background-size: 100%;
+}
+
+#pizza-of-month {
+    border: 1px solid #0B0D11;
+    background-color: #0B0D11;
+    border-radius:5px ;
+    padding: 10px;
+    height: max-content;
+    width: max-content;
+}
+#pom-img {
+    width: 300px;
+    height: 175px;
+    border-radius: 3px;
+}
+
+#pom-title{
+    color: white;
+    margin-bottom: 8px;
+    margin-right: 50px;
+}
+
+#center-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 200px;
+    width: 33%;
+}
+
+#under-title{
+    color: red;
+    font-size: medium;
+}
+
+#pom-name {
+    color: white;
+    font-weight: 300;
+}
+
+#pom-price {
+    color: red;
+    font-size: large;
+    margin-right: 95px;
+}
+
+#fwbc-title {
+    font-size: xx-large;
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+}
+
+#beer-on-tap {
+    width: 400px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius:5px ;
+    padding: 8px;
+    border: 1px solid #0B0D11;
+    background-color: #0B0D11;
+    margin-top: 5px;
+}
+
+#one-tap {
+    padding: 5px;
+    color: white;
+}
+
+#beer-on-tap-title{
+    padding: 5px;
+    color: red;
+}
+
+#za-of-month {
+    display: flex;
+    width: 33%;
+    justify-content: center;
+}
+
+#monthy-items {
+    padding-top: 86px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#about-us {
+
 }
