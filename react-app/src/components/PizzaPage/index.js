@@ -4,6 +4,7 @@ import { useParams, NavLink, Switch } from 'react-router-dom';
 import { LoadPizzas } from "../../store/pizza";
 import OpenModalButton from "../OpenModalButton";
 import DeleteForm from "../deletePizza";
+import UpdateForm from "../editPizza";
 import "./pizzaPage.css"
 
 const PizzaPage = () => {
@@ -27,10 +28,15 @@ const PizzaPage = () => {
                     <div>{pizza?.name}-{pizza?.price}$</div>
                     <div>{pizza?.description}</div>
                     <div>{pizza?.ingredientList}</div>
+                    <img src={pizza?.pizzaImg} />
                     <div>
                         {currentUser?.isAdmin && (
                             <>
-                            <NavLink to={`/pizza/${pizza?.id}/edit`}>Edit Pizza</NavLink>
+                            <OpenModalButton
+                            buttonText="Edit-Pizza"
+                            modalComponent={<UpdateForm pizzaId={pizza?.id}/>}
+                        />
+
 
                             < OpenModalButton
                             buttonText="Delete Menu Item"

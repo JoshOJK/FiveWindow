@@ -1,14 +1,13 @@
 from app.models import db, Pizza, environment, SCHEMA
 
-
 # Sample pizza data
 pizza_data = [
     {
-        'name': 'Margherita',
+        'name': 'Caprese',
         'description': 'Classic Margherita pizza with tomato sauce and mozzarella cheese.',
         'price': 10,
         'ingredientList': 'Tomato sauce, mozzarella cheese',
-        'pizzaImg': 'margherita.jpg'
+        'pizzaImg': 'https://www.allrecipes.com/thmb/fFW1o307WSqFFYQ3-QXYVpnFj6E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/48727-Mikes-homemade-pizza-DDMFS-beauty-4x3-BG-2974-a7a9842c14e34ca699f3b7d7143256cf.jpg'
     },
     {
         'name': 'Pepperoni',
@@ -25,14 +24,14 @@ pizza_data = [
         'pizzaImg': 'vegetarian.jpg'
     },
     {
-        'name': 'Hawaiian',
+        'name': 'Fiery Hawaiian',
         'description': 'Hawaiian pizza with ham, pineapple, and cheese.',
         'price': 13,
         'ingredientList': 'Ham, pineapple, tomato sauce, mozzarella cheese',
         'pizzaImg': 'hawaiian.jpg'
     },
     {
-        'name': 'Supreme',
+        'name': 'Five Window Special',
         'description': 'Supreme pizza with pepperoni, sausage, bell peppers, onions, olives, and cheese.',
         'price': 15,
         'ingredientList': 'Pepperoni, sausage, bell peppers, onions, olives, tomato sauce, mozzarella cheese',
@@ -46,34 +45,42 @@ pizza_data = [
         'pizzaImg': 'bbq_chicken.jpg'
     },
     {
-        'name': 'Mushroom Lovers',
-        'description': 'Pizza for mushroom lovers with assorted mushrooms and cheese.',
+        'name': 'Scooby Special',
+        'description': 'A pizza made by scooby himself with all the toppings you"ll ever need.',
         'price': 13,
-        'ingredientList': 'Assorted mushrooms, tomato sauce, mozzarella cheese',
+        'ingredientList': 'Ranch base, cheese, ham, pepperoni, sausage, bacon, chicken, onion, tomato, bell pepper, mushroom, jalapeno, sweet pepper, and olive',
         'pizzaImg': 'mushroom_lovers.jpg'
     },
     {
-        'name': 'Buffalo Chicken',
-        'description': 'Spicy Buffalo Chicken pizza with buffalo sauce, chicken, onions, and cheese.',
+        'name': 'Pesto BLT',
+        'description': 'The blt sandwich collides with a craft pizza that makes the pesto blt.',
         'price': 14,
-        'ingredientList': 'Buffalo sauce, chicken, onions, tomato sauce, mozzarella cheese',
+        'ingredientList': 'Pesto base with bacon, spinach, cherry tomato, a ranch drizzle, and topped with cracked pepper and parmesan cheese',
         'pizzaImg': 'buffalo_chicken.jpg'
     },
     {
         'name': 'Meat Lovers',
         'description': 'Pizza for meat lovers with pepperoni, sausage, ham, bacon, and cheese.',
         'price': 16,
-        'ingredientList': 'Pepperoni, sausage, ham, bacon, tomato sauce, mozzarella cheese',
+        'ingredientList': 'Pepperoni, sausage, bacon, tomato sauce, mozzarella cheese',
         'pizzaImg': 'meat_lovers.jpg'
     },
     {
-        'name': 'Pesto Chicken',
-        'description': 'Pesto Chicken pizza with pesto sauce, chicken, tomatoes, and cheese.',
+        'name': 'Chicken Pesto',
+        'description': 'Chicken Pesto pizza with pesto sauce, chicken, tomatoes, and cheese.',
         'price': 14,
-        'ingredientList': 'Pesto sauce, chicken, tomatoes, mozzarella cheese',
+        'ingredientList': 'Pesto sauce, chicken, tomatoes, mozzarella cheese, and basil',
         'pizzaImg': 'pesto_chicken.jpg'
+    },
+    {
+        'name': 'HoneyBee Mine',
+        'description': 'The HoneyBee Mine is a delicious combination of spicy and sweet.',
+        'price': 16,
+        'ingredientList': 'Marinarra base, with cheese, hot soppressata, cherry tomatos, goat cheese, topped with basil and hot honey.',
+        'pizzaImg': 'https://res.cloudinary.com/dhruiovd0/image/upload/v1678152994/ZbKwuazZYQTcjxVWPnH-NLTGC4IOB81uEP_9DF9UFCE_if4gtl.webp'
     }
 ]
+
 
 # Seeder function
 def seed_pizzas():
@@ -92,3 +99,5 @@ def unseed_pizzas():
 # Run the seeder function
 if __name__ == "__main__":
     seed_pizzas()
+
+    unseed_pizzas()

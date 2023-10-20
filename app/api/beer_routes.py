@@ -96,7 +96,7 @@ def get_one_beerTap(id):
     return {'error': 'Beer tap could not be found'}, 404
 
 
-## Create a shopping cart
+## Create a shopping cart item
 @beer_routes.route('/<int:id>/shopping-cart', methods=['POST'])
 def create_user_cart(id):
     form = BeerCartItemForm()
@@ -110,7 +110,6 @@ def create_user_cart(id):
     ).first()
 
 
-
     if beer and cart:
         if beerItem:
             form['csrf_token'].data = request.cookies['csrf_token']
@@ -118,16 +117,31 @@ def create_user_cart(id):
                 beerItem.quantity+= form.data['quantity']
                 db.session.commit()
                 return beerItem.to_dict()
-            else:
-                form['csrf_token'].data = request.cookies['csrf_token']
-                if form.validate_on_submit():
-                    item = BeerCartItem(
-                    beer_id=id,
-                    shoppingCart_id=cart.id,
-                    quantity=form.data['quantity']
-                    )
-                    db.session.add(item)
-                    db.session.commit()
-                    return item.to_dict()
+        else:
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                item = BeerCartItem(
+                beer_id=id,
+                shoppingCart_id=cart.id,
+                quantity=form.data['quantity']
+                )
+                db.session.add(item)
+                db.session.commit()
+                return item.to_dict()
 
     return {'errors': 'Failed to add item to your cart'}
+
+
+@beer_routes.route('/<int:id>/shopping-cart', methods=["DELETE"])
+@login_required
+def delete_cart_item(id):
+    cart = ShoppingCart.query.filter(
+        ShoppingCart.cartOwner_id == current_user.id).first()
+    cartItem = BeerCartItem.query.filter(
+        BeerCartItem.beer_id == id,
+        BeerCartItem.shoppingCart_id == cart.id).first()
+    if cart and cartItem:
+        db.session.delete(cartItem)
+        db.session.commit()
+        return {'Message': 'cart item has been deleted'}
+    return {'errors': 'cart or cart item could not be found'}, 404

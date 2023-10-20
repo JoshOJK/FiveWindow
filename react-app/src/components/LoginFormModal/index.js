@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { createShoppingCart, LoadCart } from "../../store/shoppingCart";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -11,15 +12,23 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password))
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
+
+  const demoLogin = () => {
+    setEmail('demo@aa.io')
+    setPassword('password')
+  }
 
   return (
     <>
@@ -48,6 +57,7 @@ function LoginFormModal() {
             required
           />
         </label>
+        <button className="demo-button" onClick={demoLogin}>Log in as demo user</button>
         <button type="submit">Log In</button>
       </form>
     </>
