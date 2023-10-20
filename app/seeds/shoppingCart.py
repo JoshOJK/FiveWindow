@@ -1,4 +1,5 @@
-from app.models import db, ShoppingCart, environment, SCHEMA
+from app.models import db, environment, SCHEMA
+from app.models.shoppingCart import ShoppingCart
 from sqlalchemy.sql import text
 
 
