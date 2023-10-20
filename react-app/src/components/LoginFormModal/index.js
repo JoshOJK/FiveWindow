@@ -25,6 +25,11 @@ function LoginFormModal() {
     }
   };
 
+  const demoLogin = () => {
+    setEmail('demo@aa.io')
+    setPassword('password')
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -52,6 +57,7 @@ function LoginFormModal() {
             required
           />
         </label>
+        <button className="demo-button" onClick={demoLogin}>Log in as demo user</button>
         <button type="submit">Log In</button>
       </form>
     </>
