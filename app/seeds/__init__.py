@@ -23,10 +23,10 @@ def seed():
         unseed_beers()
         unseed_pizzas()
         undo_shopping_carts()
-    seed_shopping_carts()
     seed_users()
     seed_beers()
     seed_pizzas()
+    seed_shopping_carts()
     # Add other seed functions here
 
 
