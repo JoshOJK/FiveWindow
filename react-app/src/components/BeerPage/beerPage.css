@@ -1,3 +1,94 @@
-#beer-wrapper {
+#beer-tap-grid {
+    display: grid;
+    column-gap: 15px;
     padding-top: 86px;
+    grid-template-columns: 250px 250px 250px;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+#beer-info {
+    color: white;
+}
+
+#beer-tap-wrapper {
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+
+#beer-description {
+    color: white;
+}
+
+#create-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hops-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+#hops-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hops-info-wrapper1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: .3px solid white;
+    border-right: .3px solid white;
+}
+
+#hops-icon {
+    color: white;
+    font-size: 70px;
+    padding: 20px;
+}
+
+#hops-title {
+    color: white;
+    padding: 20px;
+    border-bottom: 1px solid bisque;
+    font-family: 'Questrial', sans-serif;
+    letter-spacing: 2px;
+}
+
+#hops-info {
+    text-align: center;
+    color: bisque;
+    width: 75%;
+    padding: 20px;
+    line-height: 25px;
+}
+
+#beer-tap-greeting {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 86px;
+}
+
+#beer-greeting-title {
+    color:#917839;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+#beer-greeting-info {
+    color: ivory;
+    width: 35%;
+    text-align: center;
 }

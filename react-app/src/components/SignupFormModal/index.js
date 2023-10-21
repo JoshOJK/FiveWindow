@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import { createShoppingCart, LoadCart } from "../../store/shoppingCart";
+import OpenModalButton2 from "../OpenModalButton/indexV2";
+import LoginFormModal from "../LoginFormModal";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -36,53 +38,61 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<div id='signup-modal-wrapper'>
+			<h1 id="signup-header" >Sign Up</h1>
+			<form id="signup-form-wrapper" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
 				<label>
-					Email
 					<input
+						id="signup-input-box"
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						placeholder="Email"
 					/>
 				</label>
 				<label>
-					Username
 					<input
+						id="signup-input-box"
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
+						placeholder="Username"
 					/>
 				</label>
 				<label>
-					Password
 					<input
+						id="signup-input-box"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
+						placeholder="Password"
 					/>
 				</label>
 				<label>
-					Confirm Password
 					<input
+						id="signup-input-box"
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
+						placeholder="Confirm Password"
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button id="signup-button" type="submit">Sign Up</button>
+				<p id="returning-user">Already have an account? <a><OpenModalButton2
+              buttonText="Login"
+              modalComponent={<LoginFormModal />}
+            /></a> here</p>
 			</form>
-		</>
+		</div>
 	);
 }
 
