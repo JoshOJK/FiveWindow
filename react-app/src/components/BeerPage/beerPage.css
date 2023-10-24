@@ -92,3 +92,45 @@
     width: 35%;
     text-align: center;
 }
+
+#edit-delete-container button {
+    border: none;
+    font-size: 15px;
+    background: none;
+    color: white;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+#edit-delete-container button:hover {
+    cursor: pointer;
+}
+
+#edit-delete-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#create-beer-button {
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    color: white;
+    transition: 0.25s;
+
+    &:hover,
+    &:focus {
+      border-color: (white, 45deg);
+      color: red;
+      cursor: pointer;
+  }
+}
+
+#create-beer-button:hover,
+#create-beer-button:focus {
+    box-shadow: inset 0 -3.25em 0 0 (red, 45deg);
+
+}

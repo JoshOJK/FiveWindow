@@ -4,12 +4,12 @@ import { useHistory, useParams } from "react-router-dom";
 import { updateBeer, loadBeerDetails } from "../../store/beer";
 import { useModal } from "../../context/Modal";
 import { LoadBeers } from "../../store/beer";
+import "./editBeerModal.css"
 
 
 
 
 const UpdateBeerForm = ({ beerId }) => {
-    // const { beerId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const beer = useSelector((state) => state.beer[beerId])
@@ -98,11 +98,11 @@ const UpdateBeerForm = ({ beerId }) => {
 
 
     return (
-        <section className="create-beer-container">
-            <h1>Update your Beer</h1>
-            <form onSubmit={handleSubmit} className="create-beer-form">
-                <div className="general-info">
-                    <div className="form-group">
+        <section id="edit-beer-container">
+            <h1 id="edit-beer-header">Edit Tap</h1>
+            <form onSubmit={handleSubmit} id="edit-beer-form">
+                <div id="general-info">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.name ? 'error' : ''}`}
                             type="string"
@@ -115,8 +115,8 @@ const UpdateBeerForm = ({ beerId }) => {
                             )}
 
                     </div>
-                    <div className="form-group">
-                        <input
+                    <div id="form-group">
+                        <textarea
                             className={`input-field ${errors.description ? 'error' : ''}`}
                             type="string"
                             name="description"
@@ -127,7 +127,7 @@ const UpdateBeerForm = ({ beerId }) => {
                                 <p className='error-message'>{errors.description}*</p>
                             )}
                     </div>
-                    <div className="form-group">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.abv ? 'error' : ''}`}
                             type="number"
@@ -140,7 +140,7 @@ const UpdateBeerForm = ({ beerId }) => {
                             )}
                     </div>
                 </div>
-                <button type="submit" disabled={validSubmit} className="create-beer-btn" >Update Restaurant</button>
+                <button type="submit" disabled={validSubmit} id="edit-beer-btn" >Update Tap</button>
             </form>
         </section>
     )

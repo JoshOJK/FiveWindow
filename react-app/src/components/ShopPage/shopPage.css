@@ -1,3 +1,11 @@
 #shop-wrapper {
-    padding-top: 86px;
+    padding-top: 90px;
+}
+
+#shop-info {
+    color: white;
+}
+
+#beer-title {
+    color: bisque
 }

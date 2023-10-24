@@ -45,16 +45,18 @@ const BeerPage = () => {
                     <div id='beer-tap-wrapper'>
                         <div id='beer-info'>{beer?.name}-{beer?.abv}.0%</div>
                         <div id="beer-description">{beer?.description}</div>
-                        <div>
+                        <div id='edit-delete-container'>
                             {currentUser?.isAdmin && (
                                 <>
                                     <OpenModalButton
-                                        buttonText="Edit-Beer-Tap"
+                                        buttonText={(<span class="material-symbols-outlined">
+                                        edit
+                                        </span>)}
                                         modalComponent={<UpdateBeerForm beerId={beer?.id} />}
                                     />
 
                                     <OpenModalButton
-                                        buttonText="Delete"
+                                        buttonText={(<span class="material-symbols-outlined" id="delete-cart-item">delete_forever</span>)}
                                         modalComponent={<DeleteBeerForm beerId={beer?.id} />}
                                     />
                                 </>

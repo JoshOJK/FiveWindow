@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { deleteBeer } from "../../store/beer";
 import { LoadBeers } from "../../store/beer";
 import { useModal } from "../../context/Modal";
+import "./deleteConfirm.css"
 
 
 const DeleteBeerForm = ({ beerId }) => {
@@ -26,12 +27,13 @@ const DeleteBeerForm = ({ beerId }) => {
     }
 
     return (
-        <div className="delete-container">
-            <h2 className="borp">Confirm Delete</h2>
-            <p className="delete-text">Are you sure you want to remove this beer tap?</p>
-            <div className="button57-container">
-                <button className="yes-button1" onClick={() => handleDelete()}>YES (Delete Beer Tap)</button>
-                <button className="no-button1" onClick={() => closeModal()}>NO (Keep Beer Tap)</button>
+        <div id="delete-container">
+            <span id='warning' class="material-symbols-outlined">warning</span>
+            <h2 id="borp">Are you sure?</h2>
+            <p id="delete-text">You are about to delete a beer tap!</p>
+            <div id="button57-container">
+                <button id="yes-button1" onClick={() => handleDelete()}>Delete</button>
+                <button id="no-button1" onClick={() => closeModal()}>Cancel</button>
             </div>
         </div>
     )

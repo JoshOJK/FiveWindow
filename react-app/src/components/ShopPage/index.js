@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink} from 'react-router-dom';
 import { LoadBeers } from "../../store/beer";
 import { LoadCart, newCartItem } from "../../store/shoppingCart";
+import "./shopPage.css"
 
 const ShopPage = () => {
     const dispatch = useDispatch();
@@ -37,12 +38,15 @@ const ShopPage = () => {
     return (
         <div>
         <div id="shop-wrapper">
+            <div>
+                <p id="shop-info">Buy our craft beer by the keg for all of you party and get together needs.</p>
+                <p id="shop-info">By purchasing online you skip the wait in-store and walk in when you keg(s) are ready for you!</p>
+            </div>
           <div>
                 {beerArray?.map((beer) => (
                     <div>
-                    <div>{beer?.name}-{beer?.abv}.0%</div>
-                    <button onClick={() => handleKeg(beer?.id, payload)}>Half Keg 89.99$</button>
-                    <button onClick={() => handleKeg(beer?.id, payload)}>Full Keg 189.99$</button>
+                    <div id="beer-title">{beer?.name}-{beer?.abv}.0%</div>
+                    <button onClick={() => handleKeg(beer?.id, payload)}>By the Keg 499.99$</button>
                     </div>
                 ))}
             </div>

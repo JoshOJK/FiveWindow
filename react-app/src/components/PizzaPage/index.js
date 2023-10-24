@@ -6,14 +6,20 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteForm from "../deletePizza";
 import UpdateForm from "../editPizza";
 import "./pizzaPage.css"
+import { useHistory } from "react-router-dom";
 
 const PizzaPage = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     let pizzaObject = useSelector((state) => state.pizza)
     let pizzaArray = Object.values(pizzaObject)
     let currentUser = useSelector((state) => state.session.user)
 
 
+
+    const createPizza = () => {
+        history.push("/pizza/create")
+    }
 
     useEffect(() => {
         dispatch(LoadPizzas())
@@ -22,16 +28,16 @@ const PizzaPage = () => {
 
     return (
         <div id="pizza-wrapper">
-            <div>
+            <div id="pizza-tiles-wrapper">
                 {pizzaArray?.map((pizza) => (
                     <>
-                    <div>{pizza?.name}-{pizza?.price}$</div>
-                    <div>{pizza?.description}</div>
-                    <div>{pizza?.ingredientList}</div>
-                    <img src={pizza?.pizzaImg} />
+                    <div id="pizza-title">{pizza?.name}-{pizza?.price}$</div>
+                    <div id="pizza-description">{pizza?.description}</div>
+                    <div id="pizza-ingredients">{pizza?.ingredientList}</div>
+                    <img id="pizza-image-5" src={pizza?.pizzaImg} />
                     <div>
                         {currentUser?.isAdmin && (
-                            <>
+                            <div id="edit-delete-buttons">
                             <OpenModalButton
                             buttonText="Edit-Pizza"
                             modalComponent={<UpdateForm pizzaId={pizza?.id}/>}
@@ -41,21 +47,33 @@ const PizzaPage = () => {
                             < OpenModalButton
                             buttonText="Delete Menu Item"
                             modalComponent={<DeleteForm pizzaId={pizza?.id}/>} />
-                            </>
+                            </div>
 
                         )}
                     </div>
                     </>
                 ))}
             </div>
-            <div>
+            <div id="create-wrapper-p">
                 {currentUser?.isAdmin && (
-                <>
-                <NavLink to='/pizza/create'>
+                <div>
+                <button id="create-pizza-link" onClick={createPizza}>
                 Create a Pizza
-                </NavLink>
-                </>
+                </button>
+                </div>
             )}
+            </div>
+            <div id="pizza-info-wrapper">
+                <div id="pizza-info">
+                <span class="material-symbols-outlined">breakfast_dining</span>
+                    <h2>Hand-Rolled Dough</h2>
+                    <p>We make our dough in house everyweek and hand-roll it for every pizza that makes it to your plate to ensure the best quality pizza.</p>
+                </div>
+                <div id="pizza-info">
+                <span class="material-symbols-outlined">home_pin</span>
+                    <h2>Locally sourced ingredients</h2>
+                    <p>We locally source every fruit or vegetable every week that is topped on your pizza so we never have to settle for frozen ingredients. </p>
+                </div>
             </div>
             <div className="footer">
             <div id="store-hours">

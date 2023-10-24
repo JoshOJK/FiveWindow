@@ -66,7 +66,7 @@ const NewPizza = () => {
 
   return (
     <section className="create-pizza-container">
-      <h2 className="form-heading">Create a new Pizza item for the menu</h2>
+      <h2 className="form-heading">Create a new Pizza for the menu</h2>
       <form onSubmit={handleSubmit} className="create-pizza-form">
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -95,7 +95,7 @@ const NewPizza = () => {
         <div className="form-group">
           <label htmlFor="price">price</label>
           <input
-            type="integer"
+            type="number"
             id="price"
             placeholder="Enter price"
             value={price}
