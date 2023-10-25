@@ -41,10 +41,10 @@ const HomePage = () => {
             <div id="za-of-month">
             <h2 id="pom-title">Pizza of the Month</h2>
                 <div id="pizza-of-month">
-                    <img id='pom-img' src={pizzaArray[10]?.pizzaImg} alt="pizza image"></img>
+                    <img id='pom-img' src={pizzaArray[0]?.pizzaImg} alt="pizza image"></img>
                     <h2 id='pom-name'>
-                    <span id='pom-price'>$ {pizzaArray[10]?.price}</span>
-                {pizzaArray[10]?.name}</h2>
+                    <span id='pom-price'>$ {pizzaArray[0]?.price}</span>
+                {pizzaArray[0]?.name}</h2>
                 </div>
             </div>
         </div>
@@ -66,6 +66,18 @@ const HomePage = () => {
             </div>
         </div>
         <div className="footer">
+            <div id="store-hours">
+                <h2 id="hours-title">Brewery Hours</h2>
+                <p id="hour">Monday	5:00 pm – 9:00 pm</p>
+                <p id="hour">Tuesday	3:00 pm – 9:00 pm</p>
+                <p id="hour">Wednesday	3:00 pm – 9:00 pm</p>
+                <p id="hour">Thursday	3:00 pm – 9:00 pm</p>
+                <p id="hour">Friday	12:00 pm – 11:00 pm</p>
+                <p id="hour">Saturday	11:00 am – 11:00 pm</p>
+                <p id="hour">Sunday	11:00 am – 8:00 pm</p>
+            </div>
+
+            <div>
             <a target="_blank" href="https://www.facebook.com/fivewindowbeerco/">
             <div className="button">
             <div className="icon">
@@ -95,6 +107,13 @@ const HomePage = () => {
                 <span>Yelp</span>
             </div>
             </a>
+            </div>
+            <div id="visit-us">
+                <h1 id="hours-title">Visit Our Brewery</h1>
+                <p>9 W. Locust St.</p>
+                <p>Lodi, California 95240</p>
+                <p>(209) 224-8036</p>
+            </div>
         </div>
         </>
     )

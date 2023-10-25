@@ -14,8 +14,45 @@
 
 #cart-items-wrapper{
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: 10px;
+}
+
+#checkout-button {
+    margin-left: 10px;
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+#checkout-button:hover {
+    cursor: pointer;
+
 }
 
 #delete-cart-item:hover{
+    cursor: pointer;
+}
+
+#no-cart-items {
+    align-self: center;
+    padding-top: 20px;
+}
+
+#cart-item {
+    align-self: center;
+    justify-content: center;
+}
+
+#cart-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#add-one-quantity:hover {
     cursor: pointer;
 }

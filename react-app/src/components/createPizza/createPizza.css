@@ -1,3 +1,71 @@
-.create-pizza-container{
-    padding-top: 86px;
+
+.create-pizza-container {
+    color: white;
+    background: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+
+.form-heading {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid red;
+    border-radius: 5px;
+    background: black;
+    color: white;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: white;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+.create-pizza-btn {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.create-pizza-btn:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.create-pizza-btn:hover {
+    background: darkred;
 }

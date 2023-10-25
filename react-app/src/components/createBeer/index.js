@@ -60,9 +60,9 @@ const NewBeer = () => {
 
     return (
         <section className="create-beer-container">
-          <h2 className="form-heading">Create a new Beer to be on tap</h2>
-          <form onSubmit={handleSubmit} className="create-pizza-form">
-            <div className="form-group">
+          <h2 className="form-heading3">Create a new Beer to be on tap</h2>
+          <form onSubmit={handleSubmit} className="create-beer-form">
+            <div className="form-group3">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -74,7 +74,7 @@ const NewBeer = () => {
               />
               {errors.name && <p className="error-message">{errors.name}</p>}
             </div>
-            <div className="form-group">
+            <div className="form-group3">
               <label htmlFor="description">Description</label>
               <textarea
                 type="text"
@@ -86,7 +86,7 @@ const NewBeer = () => {
               />
               {errors.description && <p className="error-message">{errors.description}</p>}
             </div>
-            <div className="form-group">
+            <div className="form-group3">
               <label htmlFor="abv">Abv</label>
               <input
                 type="integer"

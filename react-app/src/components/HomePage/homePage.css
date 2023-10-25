@@ -114,7 +114,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-left: 10%;
+    padding-left: 13%;
 }
 
 #za-of-month {
@@ -201,10 +201,23 @@
     align-items: center;
 }
 
+#store-hours {
+    margin-bottom: 20px;
+}
+
+#visit-us {
+    margin-bottom: 50px;
+}
+
+#hours-title {
+    font-family: 'Questrial', sans-serif;
+}
+
+
 .footer {
     height: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: end;
     flex-direction: row;
     background-image: linear-gradient(to top, lightgrey, whitesmoke, white);

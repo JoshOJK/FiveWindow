@@ -1,3 +1,60 @@
 #shop-wrapper {
-    padding-top: 86px;
+    padding-top: 90px;
+}
+
+#shop-info {
+    color: white;
+    font-family: 'Questrial', sans-serif;
+}
+
+#beer-title {
+    color: bisque
+}
+
+#shop-page-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#shop-header {
+    color: bisque;
+    border-bottom: 1px solid white;
+    font-size: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    justify-self: center;
+    width: 25%;
+}
+
+#shop-items-4 {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+#shop-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-to-cart-button {
+    border: none;
+    background: red;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 10px;
+}
+
+#add-to-cart-button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 95px -38px black inset;
 }

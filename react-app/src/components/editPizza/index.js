@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { updatePizza, loadPizzaDetails } from "../../store/pizza";
 import { useModal } from "../../context/Modal";
 import { LoadPizzas } from "../../store/pizza";
+import "./editPizzaModal.css"
 
 
 
@@ -111,11 +112,12 @@ const UpdateForm = ({ pizzaId }) => {
 
 
     return (
-        <section className="create-pizza-container">
-            <h1>Update your Pizza</h1>
-            <form onSubmit={handleSubmit} className="create-pizza-form">
-                <div className="general-info">
-                    <div className="form-group">
+        <div>
+        <section id="edit-pizza-container">
+            <h1 id="edit-pizza-header">Update your Pizza</h1>
+            <form onSubmit={handleSubmit} id="edit-pizza-form">
+                <div id="general-info">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.name ? 'error' : ''}`}
                             type="string"
@@ -128,7 +130,7 @@ const UpdateForm = ({ pizzaId }) => {
                             )}
 
                     </div>
-                    <div className="form-group">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.description ? 'error' : ''}`}
                             type="string"
@@ -140,7 +142,7 @@ const UpdateForm = ({ pizzaId }) => {
                                 <p className='error-message'>{errors.description}*</p>
                             )}
                     </div>
-                    <div className="form-group">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.couprice ? 'error' : ''}`}
                             type="number"
@@ -152,7 +154,7 @@ const UpdateForm = ({ pizzaId }) => {
                                 <p className='error-message'>{errors.price}*</p>
                             )}
                     </div>
-                    <div className="form-group">
+                    <div id="form-group">
                         <input
                             className={`input-field ${errors.ingredientList ? 'error' : ''}`}
                             type="string"
@@ -165,7 +167,7 @@ const UpdateForm = ({ pizzaId }) => {
                             )}
                     </div>
 
-                    <div className="form-group">
+                    <div id="form-group">
 
                         <input
                             className={`input-field ${errors.pizzaImg ? 'error' : ''}`}
@@ -180,9 +182,10 @@ const UpdateForm = ({ pizzaId }) => {
 
                     </div>
                 </div>
-                <button type="submit" disabled={validSubmit} className="create-resturant-btn" >Update Pizza</button>
+                <button type="submit" disabled={validSubmit} id="edit-pizza-btn" >Update Pizza</button>
             </form>
         </section>
+        </div>
     )
 }
 

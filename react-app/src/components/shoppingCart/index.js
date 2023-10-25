@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink} from 'react-router-dom';
-import { deleteItem, LoadCart } from "../../store/shoppingCart";
+import { deleteItem, LoadCart, newCartItem } from "../../store/shoppingCart";
 import './shoppingCart.css'
 
 
@@ -12,7 +12,10 @@ const CartDropDown = () => {
     const sessionUser = useSelector((state) => state.session.user)
     const cartItems = userCart.beerItems
 
-    console.log(cartItems)
+    let payload = {
+        quantity: 1
+    }
+
 
     const checkout = async (cartItems) => {
         for(let item of cartItems) {
@@ -24,6 +27,11 @@ const CartDropDown = () => {
 
     const deleteCartItem = async (itemId) => {
         await dispatch(deleteItem(itemId))
+        await dispatch(LoadCart())
+    }
+
+    const increaseQuantity = async (itemId) => {
+        await dispatch(newCartItem(itemId, payload))
         await dispatch(LoadCart())
     }
 
@@ -40,7 +48,10 @@ const CartDropDown = () => {
             <ul id='cart-items-wrapper'>
                 <li>
                     {cartItems?.map((item) => (
-                        <div>{item.beer.name} {item.quantity} <span onClick={() => deleteCartItem(item.beer?.id)} class="material-symbols-outlined" id="delete-cart-item">delete_forever</span></div>
+                        <div id="cart-wrapper">
+                        <div id="cart-item">{item.beer.name} {item.quantity}</div> <span onClick={() => deleteCartItem(item.beer?.id)} class="material-symbols-outlined" id="delete-cart-item">delete_forever</span>
+                        <span id="add-one-quantity" onClick={() => increaseQuantity(item.beer.id)} class="material-symbols-outlined">add</span>
+                        </div>
                 ))}
                 </li>
             </ul>
@@ -53,6 +64,8 @@ const CartDropDown = () => {
         )}
         </>
         )}
+
+
 
         </div>
     )
