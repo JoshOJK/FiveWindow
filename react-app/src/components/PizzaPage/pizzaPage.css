@@ -1,3 +1,149 @@
 #pizza-wrapper {
     padding-top: 86px;
 }
+
+
+#pizza-tiles-wrapper {
+    display: grid;
+    column-gap: 15px;
+    padding-top: 86px;
+    justify-content: space-evenly;
+    grid-template-columns: 300px 300px 300px 300px;
+    gap: 20px;
+    width: 100%;
+}
+
+#single-pizza-wrapper {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#pizza-title {
+    color: red;
+    font-size: 30px;
+    font-family: 'Questrial', sans-serif
+}
+
+#pizza-description {
+    color: white;
+    padding-bottom: 10px;
+}
+
+#pizza-ingredients {
+    color: bisque;
+    padding-top: 10px;
+    font-family: 'Questrial', sans-serif;
+}
+
+#pizza-image-5 {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+#pizza-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#pizza-heading-title {
+    font-size: 50px;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+#pizza-heading-info {
+    text-align: center;
+    width: 40%;
+    color: bisque;
+}
+
+#edit-delete-container  {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+}
+
+#edit-delete-container button {
+    border: none;
+    font-size: 15px;
+    background: none;
+    color: white;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+#edit-delete-container button:hover {
+    cursor: pointer;
+}
+
+#create-wrapper-p {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+#create-pizza-link {
+    border: none;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#create-pizza-link:hover {
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    background-color: red;
+}
+
+#pizza-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pizza-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+#pizza-page-icon {
+    color: white;
+    font-size: 75px;
+    padding-bottom: 15px;
+}
+
+#pizza-page-info {
+    color: bisque;
+    padding: 20px;
+    border-bottom: 1px solid white;
+    font-size: 40px;
+}
+
+#pizza-page-details {
+    text-align: center;
+    color: white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    #pizza-tiles-wrapper {
+        width: 80%; /* Change the width to 80% for smaller screens */
+        margin: 0 auto; /* Center the element */
+        grid-template-columns: 250px 250px 250px ;
+
+    }
+
+}

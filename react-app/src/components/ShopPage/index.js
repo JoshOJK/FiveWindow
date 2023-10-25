@@ -36,20 +36,22 @@ const ShopPage = () => {
 
 
     return (
-        <div>
         <div id="shop-wrapper">
-            <div>
-                <p id="shop-info">Buy our craft beer by the keg for all of you party and get together needs.</p>
-                <p id="shop-info">By purchasing online you skip the wait in-store and walk in when you keg(s) are ready for you!</p>
+            <div id='shop-page-wrapper'><h1 id="shop-header">Shop</h1></div>
+            <div id='shop-page-wrapper'>
+                <p id="shop-info">Buy our craft beer by the keg (15.5 gallons) for all of you party and get together needs.</p>
             </div>
-          <div>
+          <div id='shop-items-4'>
                 {beerArray?.map((beer) => (
-                    <div>
+                    <div id='shop-items'>
                     <div id="beer-title">{beer?.name}-{beer?.abv}.0%</div>
-                    <button onClick={() => handleKeg(beer?.id, payload)}>By the Keg 499.99$</button>
+                    <button onClick={() => handleKeg(beer?.id, payload)} id='add-to-cart-button'>add to cart $499.99</button>
                     </div>
                 ))}
             </div>
+            <div id='shop-page-wrapper'>
+                <p id="shop-info">By purchasing online you skip the wait in-store and walk in when your keg(s) are ready for you!</p>
+                </div>
             <div className="footer">
             <div id="store-hours">
                 <h2 id="hours-title">Brewery Hours</h2>
@@ -101,7 +103,6 @@ const ShopPage = () => {
             </div>
         </div>
         </div>
-    </div>
     )
 
 }

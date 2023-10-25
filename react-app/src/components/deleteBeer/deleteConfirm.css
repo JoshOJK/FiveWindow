@@ -22,13 +22,13 @@
 }
 
 #warning {
-    color: #E11D48;
+    color: red;
 }
 
 #yes-button1 {
     width: 100%;
     border-radius: 5px;
-    background-color: #E11D48;
+    background-color: red;
     padding: 5px;
     color: white;
     border: none;

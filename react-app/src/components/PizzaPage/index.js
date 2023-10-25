@@ -28,51 +28,57 @@ const PizzaPage = () => {
 
     return (
         <div id="pizza-wrapper">
+            <div id="pizza-header">
+                <h1 id='pizza-heading-title'>Our Pizzas</h1>
+                <p id='pizza-heading-info'>We hand make every pizza to order in our woodfired oven that cooks every pizza to perfection, we also craft a new pizza every month with related ingredients to the season.</p>
+            </div>
             <div id="pizza-tiles-wrapper">
                 {pizzaArray?.map((pizza) => (
-                    <>
+                    <div id="single-pizza-wrapper">
                     <div id="pizza-title">{pizza?.name}-{pizza?.price}$</div>
                     <div id="pizza-description">{pizza?.description}</div>
-                    <div id="pizza-ingredients">{pizza?.ingredientList}</div>
                     <img id="pizza-image-5" src={pizza?.pizzaImg} />
-                    <div>
+                    <div id="pizza-ingredients">{pizza?.ingredientList}</div>
+                    <div id='edit-delete-container'>
                         {currentUser?.isAdmin && (
-                            <div id="edit-delete-buttons">
+                            <>
                             <OpenModalButton
-                            buttonText="Edit-Pizza"
+                            buttonText={(<span class="material-symbols-outlined">
+                            edit
+                            </span>)}
                             modalComponent={<UpdateForm pizzaId={pizza?.id}/>}
                         />
 
 
                             < OpenModalButton
-                            buttonText="Delete Menu Item"
+                            buttonText={(<span class="material-symbols-outlined" id="delete-cart-item">delete_forever</span>)}
                             modalComponent={<DeleteForm pizzaId={pizza?.id}/>} />
-                            </div>
+                            </>
 
                         )}
                     </div>
-                    </>
+                    </div>
                 ))}
             </div>
             <div id="create-wrapper-p">
                 {currentUser?.isAdmin && (
-                <div>
+                <>
                 <button id="create-pizza-link" onClick={createPizza}>
                 Create a Pizza
                 </button>
-                </div>
+                </>
             )}
             </div>
             <div id="pizza-info-wrapper">
                 <div id="pizza-info">
-                <span class="material-symbols-outlined">breakfast_dining</span>
-                    <h2>Hand-Rolled Dough</h2>
-                    <p>We make our dough in house everyweek and hand-roll it for every pizza that makes it to your plate to ensure the best quality pizza.</p>
+                <span id='pizza-page-icon' class="material-symbols-outlined">breakfast_dining</span>
+                    <h2 id="pizza-page-info">Hand-Rolled Dough</h2>
+                    <p id="pizza-page-details">We make our dough in house everyweek and hand-roll it for every pizza that makes it to your plate to ensure the best quality pizza.</p>
                 </div>
                 <div id="pizza-info">
-                <span class="material-symbols-outlined">home_pin</span>
-                    <h2>Locally sourced ingredients</h2>
-                    <p>We locally source every fruit or vegetable every week that is topped on your pizza so we never have to settle for frozen ingredients. </p>
+                <span id='pizza-page-icon' class="material-symbols-outlined">home_pin</span>
+                    <h2 id="pizza-page-info">Locally sourced ingredients</h2>
+                    <p id="pizza-page-details">We locally source every fruit or vegetable every week that is topped on your pizza so we never have to settle for frozen ingredients. </p>
                 </div>
             </div>
             <div className="footer">
