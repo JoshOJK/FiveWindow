@@ -20,6 +20,11 @@
     letter-spacing: 2px;
 }
 
+#login-errors {
+    color: white;
+    list-style: none;
+}
+
 #login-form-wrapper {
     display: flex;
     flex-direction: column;
