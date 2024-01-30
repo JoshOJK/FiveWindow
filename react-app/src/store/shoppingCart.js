@@ -25,6 +25,7 @@ const deleteCartItem = (itemId) => ({
 })
 
 
+
 export const LoadCart = () => async (dispatch) => {
     const res = await fetch('/api/cart/')
 
