@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
                     <NavLink id="nav-bar-item" to='/pizza'><span class="material-symbols-outlined nav">local_pizza</span>Pizza</NavLink>
                 </li>
                 <li>
-                    <NavLink id="nav-bar-item" to='/shop'><span class="material-symbols-outlined nav">shopping_bag</span>Shop</NavLink>
+                    <NavLink id="nav-bar-item" to='/reviews'><span class="material-symbols-outlined">rate_review</span>Reviews</NavLink>
                 </li>
                 <li onClick={handleDropDown}>
                     <span id="nav-bar-item"><span class="material-symbols-outlined nav">shopping_cart</span>Cart</span>
