@@ -12,6 +12,7 @@ import NewBeer from "./components/createBeer";
 import UpdateForm from "./components/editPizza";
 import UpdateBeerForm from "./components/editBeer";
 import ReviewsPage from "./components/reviewsPage"
+import NewReview from "./components/createReview";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path='/beer/create'>
             <NewBeer />
+          </Route>
+          <Route path='/reviews/create'>
+              <NewReview />
           </Route>
           <Route path='/reviews'>
             <ReviewsPage />

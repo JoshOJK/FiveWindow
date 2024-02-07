@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from 'react-router-dom';
 import { LoadBeers } from "../../store/beer";
+import { LoadCart, newCartItem } from "../../store/shoppingCart";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBeerForm from "../deleteBeer";
 import UpdateBeerForm from "../editBeer";
@@ -16,7 +17,19 @@ const BeerPage = () => {
     let beerArray = Object.values(beerObject)
 
 
+    let payload = {
+        quantity: 1
+    }
 
+    const handleKeg = async (beerId, payload) => {
+        if (currentUser) {
+            await dispatch(newCartItem(beerId, payload))
+            await dispatch(LoadCart())
+        } else {
+            alert("Log-in or Sign-up to add an item to your cart!")
+        }
+
+    }
 
 
     const checkBeerTap = () => {
@@ -30,7 +43,8 @@ const BeerPage = () => {
 
     useEffect(() => {
         dispatch(LoadBeers())
-    }, [dispatch])
+        dispatch(LoadCart())
+    }, [dispatch, LoadCart])
 
 
     return (
@@ -45,6 +59,9 @@ const BeerPage = () => {
                     <div id='beer-tap-wrapper'>
                         <div id='beer-info'>{beer?.name}-{beer?.abv}.0%</div>
                         <div id="beer-description">{beer?.description}</div>
+                        <div id="shop-wrapper">
+                        <button onClick={() => handleKeg(beer?.id, payload)} id='add-to-cart-button'>add to cart</button> <div id="cart-price">Per keg $399.99</div>
+                        </div>
                         <div id='edit-delete-container'>
                             {currentUser?.isAdmin && (
                                 <>
@@ -136,9 +153,9 @@ const BeerPage = () => {
             </div>
             <div id="visit-us">
                 <h1 id="hours-title">Visit Our Brewery</h1>
-                <p>9 W. Locust St.</p>
-                <p>Lodi, California 95240</p>
-                <p>(209) 224-8036</p>
+                <p id="hour">9 W. Locust St.</p>
+                <p id="hour">Lodi, California 95240</p>
+                <p id="hour">(209) 224-8036</p>
             </div>
         </div>
 

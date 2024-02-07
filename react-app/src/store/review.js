@@ -2,6 +2,7 @@ const LOAD_REVIEWS = "Reviews/LOAD_REVIEWS";
 const CREATE_REVIEW = "Reviews/CREATE_REVIEW";
 const DELETE_REVIEW = "Reviews/DELETE_REVIEW";
 const UPDATE_REVIEW = "Reviews/UPDATE_REVIEW";
+const REVIEW_DETALS = "Reviews/REVIEW_DETAILS"
 
 
 const createReview = (review) => ({
@@ -24,10 +25,15 @@ const deleteUserReview = (reviewId) => ({
   reviewId,
 });
 
+const loadReviewDetails = (review) => ({
+  type: REVIEW_DETALS,
+  review,
+})
+
 
 
 export const createFwbcReview = (reviewData) => async (dispatch) => {
-  const res = await fetch(`/api/reviews/new`, {
+  const res = await fetch(`/api/reviews/create`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(reviewData),
@@ -52,8 +58,18 @@ export const loadReviews = () => async (dispatch) => {
   }
 };
 
+export const loadReviewDetail = (reviewId) => async (dispatch) => {
+  const res = await fetch(`/api/review/${reviewId}`)
+
+  if(res.ok) {
+      const details = await res.json();
+      dispatch(loadReviewDetails(details))
+      return res;
+  }
+}
+
 export const deleteUserReviews = (reviewId) => async (dispatch) => {
-  const res = fetch(`/api/reviews/delete/${reviewId}`, {
+  const res = fetch(`/api/reviews/${reviewId}/delete`, {
     method: "DELETE",
   });
 
@@ -64,7 +80,7 @@ export const deleteUserReviews = (reviewId) => async (dispatch) => {
 };
 
 export const updateReview = (reviewId, reviewData) => async (dispatch) => {
-  const res = fetch(`/api/reviews/${reviewId}`, {
+  const res = fetch(`/api/reviews/${reviewId}/edit`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(reviewData)
@@ -87,6 +103,9 @@ const reviewReducer = (state = {}, action) => {
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
+      return newState;
+    case REVIEW_DETALS:
+      newState[action.review.id] = action.review
       return newState;
     case CREATE_REVIEW:
       newState[action.review.id] = action.review;

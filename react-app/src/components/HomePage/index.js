@@ -110,9 +110,9 @@ const HomePage = () => {
             </div>
             <div id="visit-us">
                 <h1 id="hours-title">Visit Our Brewery</h1>
-                <p>9 W. Locust St.</p>
-                <p>Lodi, California 95240</p>
-                <p>(209) 224-8036</p>
+                <p id="hour">9 W. Locust St.</p>
+                <p id="hour">Lodi, California 95240</p>
+                <p id="hour">(209) 224-8036</p>
             </div>
         </div>
         </>
