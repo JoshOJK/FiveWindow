@@ -3,6 +3,8 @@
 }
 
 #review-Lord {
+	display: flex;
+	justify-content: center;
     padding-top: 86px;
 }
 
@@ -13,16 +15,16 @@
 }
 
 .star.filled {
-	background-color: rgb(107, 185, 240);
+	background-color: rgb(255,0,0);
 }
 
 .star:hover {
-	background-color: rgb(107, 185, 240);
+	background-color: rgb(255,0,0);
 	transition: 0.5s ease;
 }
 
 .star:hover~.star {
-	background-color: rgb(107, 185, 240);
+	background-color: rgb(255,0,0);
 }
 
 .star {
@@ -30,8 +32,53 @@
 	color: white;
 	font-size: 1rem;
 	transition: 0.5s ease;
-	background-color: rgb(220, 220, 223);
+	background-color: rgb(0, 0, 0);
 	padding: 0.3rem 0.5rem 0.3rem 0.5rem;
 	border-radius: 0.5rem;
+	cursor: pointer;
+}
+
+.create-review-form {
+	align-items: center;
+	width: 40rem;
+}
+
+#review.input-field {
+	height: 10rem;
+}
+
+.form-heading-for-review {
+	color: white;
+	font-size: 1.8rem;
+	font-family: 'Questrial', sans-serif;
+	margin-top: 5rem;
+}
+
+.form-group-stars {
+	display: flex ;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.stars-text {
+	color: white;
+	margin-left: 31rem;
+}
+
+.stars {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.create-review-btn {
+	border: none;
+    background: red;
+    padding: 10px;
+    color: white;
+	border-radius: 5px;
+    margin-top: 10px;
+}
+
+.create-review-btn:hover {
 	cursor: pointer;
 }

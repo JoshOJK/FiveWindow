@@ -57,13 +57,12 @@ const UpdateReviewForm = ({reviewId}) => {
 	};
 
     return (
-        <div id="review-Lord">
+        <div id="update-review-Lord">
     <section className="create-review-container">
-  <h2 className="form-heading-for-review">Create a review</h2>
+      <h1 id="edit-review-header">EDIT REVIEW</h1>
   <form onSubmit={handleSubmit} className="create-review-form">
     <div className="form-group">
-      <label htmlFor="name">Review</label>
-      <input
+      <textarea
         type="text"
         id="review"
         placeholder="How was your experience"
@@ -74,12 +73,13 @@ const UpdateReviewForm = ({reviewId}) => {
       {errors.review && <p className="error-message">{errors.review}</p>}
     </div>
 
-    <div className="form-group">
-      <label htmlFor="stars">Stars</label>
-      <div className="stars">
-            <span className="stars-text">
+    <div className="form-group-update">
+      <div className="stars-update">
+
+            <span className="stars-text-update">
                 Select your rating
             </span>
+            <div id='just-stars'>
                 {[5, 4, 3, 2, 1].map((star) => (
                     <div
                         key={star}
@@ -87,12 +87,12 @@ const UpdateReviewForm = ({reviewId}) => {
                             star <= stars ? "filled" : ""
                         }`}
                         onClick={() => setStars(star)}>
-                            <i
-                            id="review-star-actl"
-                            className="fa-solid fa-star"></i>
+                            <span class="material-symbols-outlined" id="review-star-actl">star</span>
                     </div>
                                 ))}
+                                </div>
         </div>
+        {errors.stars && <p className="error-message">{errors.stars}</p>}
     </div>
     <button
       type="submit"

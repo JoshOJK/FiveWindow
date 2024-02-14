@@ -23,7 +23,7 @@ const ReviewsPage = () => {
         history.push("/reviews/create")
     }
 
-
+    console.log(reviewArray[0]?.createdAt)
 
     return (
         <div id="review-page-wrapper">
@@ -32,8 +32,9 @@ const ReviewsPage = () => {
                 {reviewArray?.map((review) =>
                 <li key={review?.id} id="single-review">
                     <div></div>
-                    <div>{review?.username}</div>
+                    <div>{review?.reviewer?.username}</div>
                     <div>{review?.review} {review?.stars}</div>
+                    <div>{review?.createdAt}</div>
                     {review?.reviewer?.id === sessionUser?.id && (
                         <div id="manage-review">
                             <>
@@ -52,10 +53,13 @@ const ReviewsPage = () => {
                 </li>
                 )}
             </ul>
-        <div id="create-review-wrapper">
-            <h2>Have you vistited us recently?</h2>
-            <button onClick={createReview}> create a review </button>
-        </div>
+
+            {sessionUser?.id && (
+                 <div id="create-review-wrapper">
+                 <h2>Have you vistited us recently?</h2>
+                 <button onClick={createReview}> create a review </button>
+             </div>
+            )}
 
             <div className="footer">
             <div id="store-hours">
