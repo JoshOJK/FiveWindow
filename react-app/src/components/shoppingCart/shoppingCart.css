@@ -18,6 +18,29 @@
     flex-direction: column;
     justify-content: start;
     padding-left: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#cart-items-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+#cart-items-wrapper::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca
+}
+
+
+#cart-items-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #555;
+}
+
+
+#cart-items-wrapper::-webkit-scrollbar-thumb:hover {
+    background: black;
 }
 
 #checkout-button {

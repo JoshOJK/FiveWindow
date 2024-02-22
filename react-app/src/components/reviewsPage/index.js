@@ -27,19 +27,33 @@ const ReviewsPage = () => {
 
     return (
         <div id="review-page-wrapper">
-            <h1 id="review-header">Customer Reivews</h1>
+            <div id='review-header'>
+            <h1 id="review-title">Customer Reivews</h1>
+            {sessionUser?.id && (
+                 <div id="create-review-wrapper">
+                 <p id='create-review-title'>Have you vistited us recently? <button id="create-review-button" onClick={createReview}> create a review. </button></p>
+             </div>
+            )}
+            </div>
+
             <ul id="reviews-wrapper">
                 {reviewArray?.map((review) =>
                 <li key={review?.id} id="single-review">
-                    <div></div>
-                    <div>{review?.reviewer?.username}</div>
-                    <div>{review?.review} {review?.stars}</div>
-                    <div>{review?.createdAt}</div>
+                    <div id='single-review-info'>
+                        <div id='review-username'>{review?.reviewer?.username}</div>
+                        <div id='review-stars'>
+                            {Array.from({ length: review?.stars }, (_, index) => (
+                            <i class="fa fa-star"></i>
+                            ))}
+                        </div>
+                        <div id='review-date'>{review?.createdAt}</div>
+                    </div>
+                    <div id='review-review'>{review?.review}</div>
                     {review?.reviewer?.id === sessionUser?.id && (
                         <div id="manage-review">
                             <>
                             < OpenModalButton
-                            buttonText={(<div>Update</div>)}
+                            buttonText={(<div>Edit</div>)}
                             modalComponent={<UpdateReviewForm reviewId={review?.id}/>} />
                             </>
                             <>
@@ -53,13 +67,18 @@ const ReviewsPage = () => {
                 </li>
                 )}
             </ul>
-
-            {sessionUser?.id && (
-                 <div id="create-review-wrapper">
-                 <h2>Have you vistited us recently?</h2>
-                 <button onClick={createReview}> create a review </button>
-             </div>
-            )}
+            <div id="review-info-wrapper">
+                <div id="review-info">
+                <span id='filter-icon' class="material-symbols-outlined">heart_plus</span>
+                    <h2 id="review-page-info">We Value Your Opinions</h2>
+                    <p id="review-page-details">We display every review our customers make because we value each and every one of our customers and want them to be heard by us and our staff to improve our ability to give our customers the best experience.</p>
+                </div>
+                <div id="review-info">
+                <span id='filter-icon' class="material-symbols-outlined">filter_alt_off</span>
+                    <h2 id="review-page-info">Business-Customer Transparency</h2>
+                    <p id="review-page-details">We refuse to hide our lower rated reviews to keep a level of transparency with our customers, if we didn't provide an experience up to your standards we will work out any problems to make sure your next visit is better than the last.</p>
+                </div>
+            </div>
 
             <div className="footer">
             <div id="store-hours">
