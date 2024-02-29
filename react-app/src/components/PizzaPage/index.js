@@ -15,7 +15,7 @@ const PizzaPage = () => {
     let pizzaArray = Object.values(pizzaObject)
     let currentUser = useSelector((state) => state.session.user)
 
-
+    console.log(pizzaArray)
 
     const createPizza = () => {
         history.push("/pizza/create")
@@ -37,7 +37,7 @@ const PizzaPage = () => {
                     <div id="single-pizza-wrapper">
                     <div id="pizza-title">{pizza?.name}-{pizza?.price}$</div>
                     <div id="pizza-description">{pizza?.description}</div>
-                    <img id="pizza-image-5" src={pizza?.pizzaImg} />
+                    <img id="pizza-image-5" src={pizza?.image_url[0]?.pizzaImg} />
                     <div id="pizza-ingredients">{pizza?.ingredientList}</div>
                     <div id='edit-delete-container'>
                         {currentUser?.isAdmin && (

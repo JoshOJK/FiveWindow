@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createPizza } from "../../store/pizza";
+import { createPizza, createPizzaImage } from "../../store/pizza";
 import './createPizza.css'
 
 
@@ -12,7 +12,7 @@ const NewPizza = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState();
   const [ingredientList, setIngredientList] = useState('')
-  const [pizzaImg, setPizzaImg] = useState('')
+  const [url, setUrl] = useState('')
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -20,22 +20,18 @@ const NewPizza = () => {
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
   const updateIngredientList = (e) => setIngredientList(e.target.value);
-  const updatePizzaImg = (e) => setPizzaImg(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
 
     const errors = {};
     if (!ingredientList) errors.ingredientList = 'Ingredient List is required*'
     if (!price) errors.price = 'Price is required*'
     if (!description) errors.description = "description is required*";
     if (!name) errors.name = "Name is required*"
-    if (pizzaImg) {
-      if (!pizzaImg.match(/\.(png|jpe?g)$/) || !pizzaImg) {
-        errors.pizzaImg = "Image URL must end in .png, .jpg, or .jpeg*";
-      }
-      setErrors(errors);
-    }
+
 
     if (Object.values(errors).length === 0) {
       setSubmitted(true);
@@ -44,15 +40,18 @@ const NewPizza = () => {
         description,
         price,
         ingredientList,
-        pizzaImg
       };
 
       try {
-        const createdPizza = await dispatch(
-          createPizza(pizzaData)
-        );
-        if (createdPizza) {
-          history.push(`/pizza`);
+        const createdPizza = await dispatch(createPizza(pizzaData));
+        if(createdPizza) {
+          if(url) {
+            let pizzaId = createdPizza.id
+            const formData = new FormData();
+            formData.append("url", url)
+            await dispatch(createPizzaImage(formData, pizzaId))
+          }
+          history.push(`/pizza`)
         }
       } catch (error) {
         console.error("Error creating review:", error);
@@ -123,14 +122,15 @@ const NewPizza = () => {
         <div className="form-group">
           <label htmlFor="pizzaImg">Pizza Img</label>
           <input
-            type="text"
-            id="pizzaImg"
-            placeholder="Pizza jpeg/jpg/png"
-            value={pizzaImg}
-            onChange={updatePizzaImg}
-            className={`input-field ${errors.pizzaImg ? "error" : ""}`}
+            type="file"
+            accept='image/png, image/jpeg, image/jpg'
+            placeholder="Image URL"
+            onChange={(e) => {
+              setUrl(e.target.files[0])
+            }}
+            className={`input-field ${errors.url ? "error" : ""}`}
           />
-          {errors.pizzaImg && <p className="error-message">{errors.pizzaImg}</p>}
+          {errors.url && <p className="error-message">{errors.url}</p>}
         </div>
         <button
           type="submit"
