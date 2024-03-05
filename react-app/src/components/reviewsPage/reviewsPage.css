@@ -1,0 +1,155 @@
+#review-page-wrapper {
+    padding-top: 86px;
+}
+
+#review-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    letter-spacing: 2px;
+    color: bisque;
+
+}
+
+#review-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#reviews-wrapper {
+    display: grid;
+    column-gap: 15px;
+    padding-top: 86px;
+    grid-template-columns: 28rem 28rem 28rem;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+#create-review-title {
+    color: white;
+
+}
+
+#create-review-button {
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    transition: ease-in-out .5s;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#create-review-button:hover {
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+#single-review {
+    list-style: none;
+    padding-bottom: 15px;
+}
+
+#review-username {
+    color: white;
+    font-weight: bold;
+}
+
+#review-stars {
+    color: white;
+}
+
+#review-date {
+    color: red;
+    font-size: .8rem;
+}
+
+#single-review-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+#review-review {
+    color: white;
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+#review-review::-webkit-scrollbar {
+    width: 10px;
+}
+
+#review-review::-webkit-scrollbar-track {
+    border-radius: 8px;
+            background-color: #e7e7e7;
+            border: 1px solid #cacaca
+}
+
+
+#review-review::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: red;
+}
+
+
+#review-review::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+#review-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+#review-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#filter-icon {
+    color: white;
+    font-size: 70px;
+    padding: 20px;
+}
+
+#review-page-info {
+    color: white;
+    padding: 20px;
+    border-bottom: 1px solid bisque;
+    font-family: 'Questrial', sans-serif;
+    letter-spacing: 2px;
+}
+
+#review-page-details {
+    text-align: center;
+    color: bisque;
+    width: 75%;
+    padding: 20px;
+    line-height: 25px;
+}
+
+#manage-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+#manage-review button {
+    border: 1px solid red;
+    background: red;
+    color: white;
+    margin-right: 5px;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+#manage-review button:hover {
+    cursor: pointer;
+}

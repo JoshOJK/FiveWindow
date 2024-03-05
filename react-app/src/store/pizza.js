@@ -3,31 +3,43 @@ const PIZZA_DETAIL = "PIZZA_DETAIL"
 const DELETE_PIZZA = "DELETE_PIZZA"
 const UPDATE_PIZZA = "UPDATE_PIZZA"
 const CREATE_PIZZA = "CREATE_PIZZA"
+const CREATE_PIZZA_IMAGE = "CREATE_PIZZA_IMAGE"
+const DELETE_PIZZA_IMAGE = "DELETE_PIZZA_IMAGE"
 
 const loadAction = (pizzas) => ({
     type: LOAD_PIZZA,
     pizzas,
   });
 
-  const loadDetailsAction = (pizza) => ({
+const loadDetailsAction = (pizza) => ({
     type: PIZZA_DETAIL,
     pizza,
   });
 
-  const updatePizzaAction = (pizza) => ({
+const updatePizzaAction = (pizza) => ({
     type: UPDATE_PIZZA,
     pizza,
   });
 
-  const deletePizzaAction = (pizzaId) => ({
+const deletePizzaAction = (pizzaId) => ({
     type: DELETE_PIZZA,
     pizzaId,
   });
 
-  const createPizzaAction = (pizzaDetails) => ({
+const createPizzaAction = (pizzaDetails) => ({
     type: CREATE_PIZZA,
     pizzaDetails,
   });
+
+const createPizzaImageAction = (imageUrl) => ({
+    type: CREATE_PIZZA_IMAGE,
+    imageUrl
+  })
+
+const deletePizzaImageAction = (imageId) => ({
+    type: DELETE_PIZZA_IMAGE,
+    imageId
+})
 
 export const LoadPizzas = () => async (dispatch) => {
     const res = await fetch(`/api/pizza`)
@@ -81,6 +93,31 @@ export const deletePizza = (pizzaId) => async (dispatch) => {
     dispatch(deletePizzaAction(pizzaId))
     return res;
 }
+
+export const createPizzaImage = (pizzaImg, pizzaId) => async (dispatch) => {
+    const res = await fetch(`/api/pizza/${pizzaId}/image`, {
+        method: 'POST',
+        body: pizzaImg
+    })
+    if (res.ok) {
+        const result = await res.json();
+        console.log(result, 'This is result')
+        await dispatch(createPizzaImageAction(result));
+    } else {
+        console.log("There was an error making your post!")
+    }
+}
+
+export const deletePizzaImage = (pizzaImageId) => async (dispatch) => {
+    const res = await fetch(
+      `/api/pizza/${pizzaImageId}/image/delete`,
+      {
+        method: "DELETE",
+      }
+    );
+    dispatch(deletePizzaImageAction(pizzaImageId));
+    return res;
+  };
 
 
 const pizzaReducer = (state = {}, action) => {

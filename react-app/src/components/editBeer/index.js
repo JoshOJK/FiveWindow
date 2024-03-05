@@ -36,7 +36,7 @@ const UpdateBeerForm = ({ beerId }) => {
             dispatch(loadBeerDetails(beerId))
                 .then((data) => {
                     setData({
-                        nane: data.name,
+                        name: data.name,
                         description: data.description,
                         abv: data.abv,
                     });

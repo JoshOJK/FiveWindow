@@ -1,6 +1,6 @@
-#shop-wrapper {
+/* #shop-wrapper {
     padding-top: 90px;
-}
+} */
 
 #shop-info {
     color: white;
@@ -57,4 +57,15 @@
 #add-to-cart-button:hover {
     cursor: pointer;
     box-shadow: 0px 0px 95px -38px black inset;
+}
+
+#shop-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+}
+
+#cart-price {
+    color: white;
 }

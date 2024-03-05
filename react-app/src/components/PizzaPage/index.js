@@ -15,7 +15,7 @@ const PizzaPage = () => {
     let pizzaArray = Object.values(pizzaObject)
     let currentUser = useSelector((state) => state.session.user)
 
-
+    console.log(pizzaArray)
 
     const createPizza = () => {
         history.push("/pizza/create")
@@ -37,7 +37,7 @@ const PizzaPage = () => {
                     <div id="single-pizza-wrapper">
                     <div id="pizza-title">{pizza?.name}-{pizza?.price}$</div>
                     <div id="pizza-description">{pizza?.description}</div>
-                    <img id="pizza-image-5" src={pizza?.pizzaImg} />
+                    <img id="pizza-image-5" src={pizza?.image_url[0]?.pizzaImg} />
                     <div id="pizza-ingredients">{pizza?.ingredientList}</div>
                     <div id='edit-delete-container'>
                         {currentUser?.isAdmin && (
@@ -126,9 +126,9 @@ const PizzaPage = () => {
             </div>
             <div id="visit-us">
                 <h1 id="hours-title">Visit Our Brewery</h1>
-                <p>9 W. Locust St.</p>
-                <p>Lodi, California 95240</p>
-                <p>(209) 224-8036</p>
+                <p id="hour">9 W. Locust St.</p>
+                <p id="hour">Lodi, California 95240</p>
+                <p id="hour">(209) 224-8036</p>
             </div>
         </div>
         </div>

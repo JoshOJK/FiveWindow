@@ -49,7 +49,8 @@ function ProfileButton({ user }) {
           <div id="profile-info">
             <li id="users-username">{user.username}</li>
             <li id="logout-button-wrapper">
-              <button onClick={handleLogout} id="logout-button">Log Out<span class="material-symbols-outlined">logout</span></button>
+              <button onClick={handleLogout} id="logout-button">Log Out
+              <span class="material-symbols-outlined" id="logout-icon">logout</span></button>
             </li>
           </div>
         ) : (

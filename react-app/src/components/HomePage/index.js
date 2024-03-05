@@ -41,7 +41,7 @@ const HomePage = () => {
             <div id="za-of-month">
             <h2 id="pom-title">Pizza of the Month</h2>
                 <div id="pizza-of-month">
-                    <img id='pom-img' src={pizzaArray[0]?.pizzaImg} alt="pizza image"></img>
+                    <img id='pom-img' src={pizzaArray[0]?.image_url[0]?.pizzaImg} alt="pizza image"></img>
                     <h2 id='pom-name'>
                     <span id='pom-price'>$ {pizzaArray[0]?.price}</span>
                 {pizzaArray[0]?.name}</h2>
@@ -110,9 +110,9 @@ const HomePage = () => {
             </div>
             <div id="visit-us">
                 <h1 id="hours-title">Visit Our Brewery</h1>
-                <p>9 W. Locust St.</p>
-                <p>Lodi, California 95240</p>
-                <p>(209) 224-8036</p>
+                <p id="hour">9 W. Locust St.</p>
+                <p id="hour">Lodi, California 95240</p>
+                <p id="hour">(209) 224-8036</p>
             </div>
         </div>
         </>
