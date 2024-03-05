@@ -83,7 +83,6 @@ def update_one_pizza(id):
                 pizza.ingredientList = form.data['ingredientList']
                 pizza.name = form.data['name']
                 pizza.price = form.data['price']
-                pizza.pizzaImg = form.data['pizzaImg']
                 db.session.commit()
                 return pizza.to_dict()
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
