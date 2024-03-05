@@ -1,7 +1,10 @@
 from flask import Blueprint, jsonify, request
-from app.models import Pizza, db
+from app.models import Pizza, PizzaImage, db
 from app.forms.pizza_form import PizzaForm
+from app.forms.pizza_image_form import PizzaImageForm
 from flask_login import login_required, current_user
+from .aws_helper import (
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
 pizza_routes = Blueprint('pizza', __name__)
 
@@ -30,8 +33,13 @@ def get_all_pizzas():
 @login_required
 def delete_one_pizza(id):
     pizza = Pizza.query.get(id)
+    pizzaImage = PizzaImage.query.get(id)
+
     if pizza:
         if current_user.isAdmin == True:
+            pizzaUrl = pizzaImage.pizzaImg
+            deleted = remove_file_from_s3(pizzaUrl)
+            print(deleted)
             db.session.delete(pizza)
             db.session.commit()
             return {'Message': 'Pizza was successfully deleted'}
@@ -52,7 +60,6 @@ def create_a_pizza():
             description=form.data['description'],
             price=form.data['price'],
             ingredientList=form.data['ingredientList'],
-            pizzaImg=form.data['pizzaImg']
         )
         db.session.add(pizza)
         db.session.commit()
@@ -94,3 +101,42 @@ def get_one_pizza(id):
         results.append(pizza.to_dict())
         return results
     return {'error': 'Menu Item could not be found'}, 404
+
+##create pizza image
+@pizza_routes.route("/<int:id>/image", methods=["POST"])
+@login_required
+def upload_image(id):
+        pizza = Pizza.query.get(id)
+
+        form = PizzaImageForm()
+        if pizza:
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                image = form.data["url"]
+                image.filename = get_unique_filename(image.filename)
+                upload = upload_file_to_s3(image)
+                print(upload)
+
+                if "url" not in upload:
+                    return {'errors': [upload]}
+                url = upload["url"]
+                pizza_image = PizzaImage(pizza_id=id, pizzaImg=url)
+                db.session.add(pizza_image)
+                db.session.commit()
+                return pizza_image.to_dict()
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return {'errors': 'This pizza does not exist'}, 404
+
+##delete pizza image
+@pizza_routes.route('/<int:id>/image/delete', methods=['DELETE'])
+@login_required
+def delete_pizza_image(id):
+    pizzaImage = PizzaImage.query.get(id)
+
+    if pizzaImage:
+        pizzaImg = PizzaImage.pizzaImg
+        deleted = remove_file_from_s3(pizzaImage)
+        print(deleted)
+        db.session.delete(pizzaImg)
+        db.session.commit()
+    return {'errors': 'Pizza image does not exist'}, 404
