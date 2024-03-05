@@ -17,6 +17,9 @@ class User(db.Model, UserMixin):
 
 
     shoppingCart = db.relationship('ShoppingCart', back_populates='cartOwner', cascade='all, delete-orphan')
+    reviews = db.relationship(
+        "Review", back_populates="reviewer", cascade="all, delete-orphan"
+    )
 
     @property
     def password(self):
@@ -30,9 +33,11 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        reviews_list = [review.no_owner() for review in self.reviews]
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            "reviews": reviews_list,
             'isAdmin': self.isAdmin
         }

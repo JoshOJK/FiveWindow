@@ -11,9 +11,11 @@ class Pizza(db.Model):
     description = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     ingredientList = db.Column(db.String, nullable=False)
-    pizzaImg = db.Column(db.String, nullable=False)
+
+    pizzaImages = db.relationship("PizzaImage", back_populates='pizza_img', cascade="all, delete-orphan")
 
     def to_dict(self):
+        img = [image.to_dict() for image in self.pizzaImages]
 
         return {
         'id': self.id,
@@ -21,5 +23,5 @@ class Pizza(db.Model):
         'description': self.description,
         'price': self.price,
         'ingredientList': self.ingredientList,
-        'pizzaImg': self.pizzaImg
+        'image_url': img
         }
