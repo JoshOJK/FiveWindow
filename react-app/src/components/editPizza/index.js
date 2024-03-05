@@ -24,7 +24,6 @@ const UpdateForm = ({ pizzaId }) => {
         description: "",
         price: "",
         ingredientList: "",
-        pizzaImg: ""
     })
 
 
@@ -35,7 +34,6 @@ const UpdateForm = ({ pizzaId }) => {
                 description: pizza.description,
                 price: pizza.price,
                 ingredientList: pizza.ingredientList,
-                pizzaImg: pizza.pizzaImg,
             });
         } else {
             dispatch(loadPizzaDetails(pizzaId))
@@ -45,7 +43,6 @@ const UpdateForm = ({ pizzaId }) => {
                         description: data.description,
                         price: data.price,
                         ingredientList: data.ingredientList,
-                        pizzaImg: data.pizzaImg,
                     });
                 })
                 .catch((err) => console.error(err));
@@ -83,9 +80,9 @@ const UpdateForm = ({ pizzaId }) => {
         if (!data.ingredientList) {
             errors.ingredientList = "ingredientList is required"
         }
-        if (!data.pizzaImg) {
-            errors.pizzaImg = "pizzaImg is required"
-        }
+        // if (!data.pizzaImg) {
+        //     errors.pizzaImg = "pizzaImg is required"
+        // }
 
         setErrors(errors)
 
@@ -167,7 +164,7 @@ const UpdateForm = ({ pizzaId }) => {
                             )}
                     </div>
 
-                    <div id="form-group">
+                    {/* <div id="form-group">
 
                         <input
                             className={`input-field ${errors.pizzaImg ? 'error' : ''}`}
@@ -180,7 +177,7 @@ const UpdateForm = ({ pizzaId }) => {
                                 <p className='error-message'>{errors.pizzaImg}*</p>
                             )}
 
-                    </div>
+                    </div> */}
                 </div>
                 <button type="submit" disabled={validSubmit} id="edit-pizza-btn" >Update Pizza</button>
             </form>
