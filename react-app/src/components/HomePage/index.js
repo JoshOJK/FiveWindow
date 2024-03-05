@@ -41,7 +41,7 @@ const HomePage = () => {
             <div id="za-of-month">
             <h2 id="pom-title">Pizza of the Month</h2>
                 <div id="pizza-of-month">
-                    <img id='pom-img' src={pizzaArray[0]?.pizzaImg} alt="pizza image"></img>
+                    <img id='pom-img' src={pizzaArray[0]?.image_url[0]?.pizzaImg} alt="pizza image"></img>
                     <h2 id='pom-name'>
                     <span id='pom-price'>$ {pizzaArray[0]?.price}</span>
                 {pizzaArray[0]?.name}</h2>

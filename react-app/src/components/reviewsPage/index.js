@@ -31,7 +31,7 @@ const ReviewsPage = () => {
             <h1 id="review-title">Customer Reivews</h1>
             {sessionUser?.id && (
                  <div id="create-review-wrapper">
-                 <p id='create-review-title'>Have you vistited us recently? <button id="create-review-button" onClick={createReview}> create a review. </button></p>
+                 <p id='create-review-title'>Have you visited us recently? <button id="create-review-button" onClick={createReview}> create a review. </button></p>
              </div>
             )}
             </div>
